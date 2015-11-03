@@ -7,7 +7,7 @@
 //
 
 import rFoundation
-import rStreams
+import rKit
 import UIKit
 
 extension UIView {

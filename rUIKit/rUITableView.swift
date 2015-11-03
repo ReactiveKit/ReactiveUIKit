@@ -6,9 +6,8 @@
 //  Copyright © 2015 Srdan Rasic. All rights reserved.
 //
 
-import rCollections
 import rFoundation
-import rStreams
+import rKit
 import UIKit
 
 extension UITableView {
