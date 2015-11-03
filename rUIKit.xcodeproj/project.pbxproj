@@ -58,8 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF537091BE9004600015674 /* rFoundation.framework in Frameworks */,
 				ECF5370A1BE9004600015674 /* rKit.framework in Frameworks */,
+				ECF537091BE9004600015674 /* rFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
