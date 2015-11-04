@@ -15,7 +15,7 @@ Extends UIKit objects with bindings.
 extension UILabel {
   public var rText: Observable<String?>
   public var rAttributedText: Observable<NSAttributedString?>
-  var rTextColor: Observable<UIColor?>
+  public var rTextColor: Observable<UIColor?>
 }
 ```
 
@@ -70,7 +70,7 @@ extension UIView {
 
 ```swift
 extension ObservableCollectionType where Collection == Array<Generator.Element> {
-public func bindTo(tableView: UITableView, createCell: (NSIndexPath, ObservableCollection<Collection>, UITableView) -> UITableViewCell) -> DisposableType
+  public func bindTo(tableView: UITableView, createCell: (NSIndexPath, ObservableCollection<Collection>, UITableView) -> UITableViewCell) -> DisposableType
 }
 ```
 
