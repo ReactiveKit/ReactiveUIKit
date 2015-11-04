@@ -7,116 +7,116 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ECF535A91BE8A15100015674 /* rUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECF535A81BE8A15100015674 /* rUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ECF535B01BE8A15100015674 /* rUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF535A51BE8A15100015674 /* rUIKit.framework */; settings = {ASSET_TAGS = (); }; };
-		ECF535B51BE8A15100015674 /* rUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535B41BE8A15100015674 /* rUIKitTests.swift */; };
-		ECF535C01BE8A19C00015674 /* rUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535BF1BE8A19C00015674 /* rUILabel.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535C81BE8A49500015674 /* rUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535C71BE8A49500015674 /* rUIImageView.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535CA1BE8A4D000015674 /* rUIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535C91BE8A4D000015674 /* rUIBarItem.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535CC1BE8A51100015674 /* rUIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535CB1BE8A51100015674 /* rUIActivityIndicatorView.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535CE1BE8A54500015674 /* rUINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535CD1BE8A54500015674 /* rUINavigationItem.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535D01BE8A56F00015674 /* rUIProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535CF1BE8A56F00015674 /* rUIProgressView.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535D21BE8A59F00015674 /* rUIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535D11BE8A59F00015674 /* rUIRefreshControl.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535D41BE8A5CB00015674 /* rUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535D31BE8A5CB00015674 /* rUIView.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF535E61BE8A9D700015674 /* rUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF535E51BE8A9D700015674 /* rUITableView.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF537091BE9004600015674 /* rFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF537071BE9004600015674 /* rFoundation.framework */; };
-		ECF5370A1BE9004600015674 /* rKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF537081BE9004600015674 /* rKit.framework */; };
+		ECB554911BE9F0AB00A1D267 /* rUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECB554901BE9F0AB00A1D267 /* rUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECB554981BE9F0AB00A1D267 /* rUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB5548D1BE9F0AB00A1D267 /* rUIKit.framework */; };
+		ECB5549D1BE9F0AB00A1D267 /* rUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB5549C1BE9F0AB00A1D267 /* rUIKitTests.swift */; };
+		ECB554A91BE9F15900A1D267 /* rFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB554A71BE9F15900A1D267 /* rFoundation.framework */; };
+		ECB554AA1BE9F15900A1D267 /* rKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB554A81BE9F15900A1D267 /* rKit.framework */; };
+		ECB554B41BE9F16800A1D267 /* rUIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AB1BE9F16800A1D267 /* rUIActivityIndicatorView.swift */; };
+		ECB554B51BE9F16800A1D267 /* rUIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AC1BE9F16800A1D267 /* rUIBarItem.swift */; };
+		ECB554B61BE9F16800A1D267 /* rUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AD1BE9F16800A1D267 /* rUIImageView.swift */; };
+		ECB554B71BE9F16800A1D267 /* rUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AE1BE9F16800A1D267 /* rUILabel.swift */; };
+		ECB554B81BE9F16800A1D267 /* rUINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AF1BE9F16800A1D267 /* rUINavigationItem.swift */; };
+		ECB554B91BE9F16800A1D267 /* rUIProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B01BE9F16800A1D267 /* rUIProgressView.swift */; };
+		ECB554BA1BE9F16800A1D267 /* rUIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B11BE9F16800A1D267 /* rUIRefreshControl.swift */; };
+		ECB554BB1BE9F16800A1D267 /* rUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B21BE9F16800A1D267 /* rUITableView.swift */; };
+		ECB554BC1BE9F16800A1D267 /* rUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B31BE9F16800A1D267 /* rUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		ECF535B11BE8A15100015674 /* PBXContainerItemProxy */ = {
+		ECB554991BE9F0AB00A1D267 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = ECF5359C1BE8A15100015674 /* Project object */;
+			containerPortal = ECB554841BE9F0AB00A1D267 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ECF535A41BE8A15100015674;
+			remoteGlobalIDString = ECB5548C1BE9F0AB00A1D267;
 			remoteInfo = rUIKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ECF535A51BE8A15100015674 /* rUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = rUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECF535A81BE8A15100015674 /* rUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rUIKit.h; sourceTree = "<group>"; };
-		ECF535AA1BE8A15100015674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECF535AF1BE8A15100015674 /* rUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECF535B41BE8A15100015674 /* rUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rUIKitTests.swift; sourceTree = "<group>"; };
-		ECF535B61BE8A15100015674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECF535BF1BE8A19C00015674 /* rUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUILabel.swift; sourceTree = "<group>"; };
-		ECF535C71BE8A49500015674 /* rUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIImageView.swift; sourceTree = "<group>"; };
-		ECF535C91BE8A4D000015674 /* rUIBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIBarItem.swift; sourceTree = "<group>"; };
-		ECF535CB1BE8A51100015674 /* rUIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIActivityIndicatorView.swift; sourceTree = "<group>"; };
-		ECF535CD1BE8A54500015674 /* rUINavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUINavigationItem.swift; sourceTree = "<group>"; };
-		ECF535CF1BE8A56F00015674 /* rUIProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIProgressView.swift; sourceTree = "<group>"; };
-		ECF535D11BE8A59F00015674 /* rUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIRefreshControl.swift; sourceTree = "<group>"; };
-		ECF535D31BE8A5CB00015674 /* rUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIView.swift; sourceTree = "<group>"; };
-		ECF535E51BE8A9D700015674 /* rUITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUITableView.swift; sourceTree = "<group>"; };
-		ECF537071BE9004600015674 /* rFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rFoundation.framework; path = Carthage/Build/iOS/rFoundation.framework; sourceTree = "<group>"; };
-		ECF537081BE9004600015674 /* rKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rKit.framework; path = Carthage/Build/iOS/rKit.framework; sourceTree = "<group>"; };
+		ECB5548D1BE9F0AB00A1D267 /* rUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = rUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECB554901BE9F0AB00A1D267 /* rUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rUIKit.h; sourceTree = "<group>"; };
+		ECB554921BE9F0AB00A1D267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECB554971BE9F0AB00A1D267 /* rUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECB5549C1BE9F0AB00A1D267 /* rUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rUIKitTests.swift; sourceTree = "<group>"; };
+		ECB5549E1BE9F0AB00A1D267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECB554A71BE9F15900A1D267 /* rFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rFoundation.framework; path = Carthage/Build/iOS/rFoundation.framework; sourceTree = "<group>"; };
+		ECB554A81BE9F15900A1D267 /* rKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rKit.framework; path = Carthage/Build/iOS/rKit.framework; sourceTree = "<group>"; };
+		ECB554AB1BE9F16800A1D267 /* rUIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIActivityIndicatorView.swift; sourceTree = "<group>"; };
+		ECB554AC1BE9F16800A1D267 /* rUIBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIBarItem.swift; sourceTree = "<group>"; };
+		ECB554AD1BE9F16800A1D267 /* rUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIImageView.swift; sourceTree = "<group>"; };
+		ECB554AE1BE9F16800A1D267 /* rUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUILabel.swift; sourceTree = "<group>"; };
+		ECB554AF1BE9F16800A1D267 /* rUINavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUINavigationItem.swift; sourceTree = "<group>"; };
+		ECB554B01BE9F16800A1D267 /* rUIProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIProgressView.swift; sourceTree = "<group>"; };
+		ECB554B11BE9F16800A1D267 /* rUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIRefreshControl.swift; sourceTree = "<group>"; };
+		ECB554B21BE9F16800A1D267 /* rUITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUITableView.swift; sourceTree = "<group>"; };
+		ECB554B31BE9F16800A1D267 /* rUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ECF535A11BE8A15100015674 /* Frameworks */ = {
+		ECB554891BE9F0AB00A1D267 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF5370A1BE9004600015674 /* rKit.framework in Frameworks */,
-				ECF537091BE9004600015674 /* rFoundation.framework in Frameworks */,
+				ECB554A91BE9F15900A1D267 /* rFoundation.framework in Frameworks */,
+				ECB554AA1BE9F15900A1D267 /* rKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ECF535AC1BE8A15100015674 /* Frameworks */ = {
+		ECB554941BE9F0AB00A1D267 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF535B01BE8A15100015674 /* rUIKit.framework in Frameworks */,
+				ECB554981BE9F0AB00A1D267 /* rUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ECF5359B1BE8A15100015674 = {
+		ECB554831BE9F0AB00A1D267 = {
 			isa = PBXGroup;
 			children = (
-				ECF537071BE9004600015674 /* rFoundation.framework */,
-				ECF537081BE9004600015674 /* rKit.framework */,
-				ECF535A71BE8A15100015674 /* rUIKit */,
-				ECF535B31BE8A15100015674 /* rUIKitTests */,
-				ECF535A61BE8A15100015674 /* Products */,
+				ECB554A71BE9F15900A1D267 /* rFoundation.framework */,
+				ECB554A81BE9F15900A1D267 /* rKit.framework */,
+				ECB5548F1BE9F0AB00A1D267 /* rUIKit */,
+				ECB5549B1BE9F0AB00A1D267 /* rUIKitTests */,
+				ECB5548E1BE9F0AB00A1D267 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		ECF535A61BE8A15100015674 /* Products */ = {
+		ECB5548E1BE9F0AB00A1D267 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ECF535A51BE8A15100015674 /* rUIKit.framework */,
-				ECF535AF1BE8A15100015674 /* rUIKitTests.xctest */,
+				ECB5548D1BE9F0AB00A1D267 /* rUIKit.framework */,
+				ECB554971BE9F0AB00A1D267 /* rUIKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ECF535A71BE8A15100015674 /* rUIKit */ = {
+		ECB5548F1BE9F0AB00A1D267 /* rUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				ECF535A81BE8A15100015674 /* rUIKit.h */,
-				ECF535BF1BE8A19C00015674 /* rUILabel.swift */,
-				ECF535C91BE8A4D000015674 /* rUIBarItem.swift */,
-				ECF535C71BE8A49500015674 /* rUIImageView.swift */,
-				ECF535CB1BE8A51100015674 /* rUIActivityIndicatorView.swift */,
-				ECF535CD1BE8A54500015674 /* rUINavigationItem.swift */,
-				ECF535CF1BE8A56F00015674 /* rUIProgressView.swift */,
-				ECF535D11BE8A59F00015674 /* rUIRefreshControl.swift */,
-				ECF535D31BE8A5CB00015674 /* rUIView.swift */,
-				ECF535E51BE8A9D700015674 /* rUITableView.swift */,
-				ECF535AA1BE8A15100015674 /* Info.plist */,
+				ECB554901BE9F0AB00A1D267 /* rUIKit.h */,
+				ECB554921BE9F0AB00A1D267 /* Info.plist */,
+				ECB554AB1BE9F16800A1D267 /* rUIActivityIndicatorView.swift */,
+				ECB554AC1BE9F16800A1D267 /* rUIBarItem.swift */,
+				ECB554AD1BE9F16800A1D267 /* rUIImageView.swift */,
+				ECB554AE1BE9F16800A1D267 /* rUILabel.swift */,
+				ECB554AF1BE9F16800A1D267 /* rUINavigationItem.swift */,
+				ECB554B01BE9F16800A1D267 /* rUIProgressView.swift */,
+				ECB554B11BE9F16800A1D267 /* rUIRefreshControl.swift */,
+				ECB554B21BE9F16800A1D267 /* rUITableView.swift */,
+				ECB554B31BE9F16800A1D267 /* rUIView.swift */,
 			);
 			path = rUIKit;
 			sourceTree = "<group>";
 		};
-		ECF535B31BE8A15100015674 /* rUIKitTests */ = {
+		ECB5549B1BE9F0AB00A1D267 /* rUIKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				ECF535B41BE8A15100015674 /* rUIKitTests.swift */,
-				ECF535B61BE8A15100015674 /* Info.plist */,
+				ECB5549C1BE9F0AB00A1D267 /* rUIKitTests.swift */,
+				ECB5549E1BE9F0AB00A1D267 /* Info.plist */,
 			);
 			path = rUIKitTests;
 			sourceTree = "<group>";
@@ -124,25 +124,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		ECF535A21BE8A15100015674 /* Headers */ = {
+		ECB5548A1BE9F0AB00A1D267 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF535A91BE8A15100015674 /* rUIKit.h in Headers */,
+				ECB554911BE9F0AB00A1D267 /* rUIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		ECF535A41BE8A15100015674 /* rUIKit */ = {
+		ECB5548C1BE9F0AB00A1D267 /* rUIKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECF535B91BE8A15100015674 /* Build configuration list for PBXNativeTarget "rUIKit" */;
+			buildConfigurationList = ECB554A11BE9F0AB00A1D267 /* Build configuration list for PBXNativeTarget "rUIKit" */;
 			buildPhases = (
-				ECF535A01BE8A15100015674 /* Sources */,
-				ECF535A11BE8A15100015674 /* Frameworks */,
-				ECF535A21BE8A15100015674 /* Headers */,
-				ECF535A31BE8A15100015674 /* Resources */,
+				ECB554881BE9F0AB00A1D267 /* Sources */,
+				ECB554891BE9F0AB00A1D267 /* Frameworks */,
+				ECB5548A1BE9F0AB00A1D267 /* Headers */,
+				ECB5548B1BE9F0AB00A1D267 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -150,72 +150,72 @@
 			);
 			name = rUIKit;
 			productName = rUIKit;
-			productReference = ECF535A51BE8A15100015674 /* rUIKit.framework */;
+			productReference = ECB5548D1BE9F0AB00A1D267 /* rUIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		ECF535AE1BE8A15100015674 /* rUIKitTests */ = {
+		ECB554961BE9F0AB00A1D267 /* rUIKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECF535BC1BE8A15100015674 /* Build configuration list for PBXNativeTarget "rUIKitTests" */;
+			buildConfigurationList = ECB554A41BE9F0AB00A1D267 /* Build configuration list for PBXNativeTarget "rUIKitTests" */;
 			buildPhases = (
-				ECF535AB1BE8A15100015674 /* Sources */,
-				ECF535AC1BE8A15100015674 /* Frameworks */,
-				ECF535AD1BE8A15100015674 /* Resources */,
+				ECB554931BE9F0AB00A1D267 /* Sources */,
+				ECB554941BE9F0AB00A1D267 /* Frameworks */,
+				ECB554951BE9F0AB00A1D267 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ECF535B21BE8A15100015674 /* PBXTargetDependency */,
+				ECB5549A1BE9F0AB00A1D267 /* PBXTargetDependency */,
 			);
 			name = rUIKitTests;
 			productName = rUIKitTests;
-			productReference = ECF535AF1BE8A15100015674 /* rUIKitTests.xctest */;
+			productReference = ECB554971BE9F0AB00A1D267 /* rUIKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		ECF5359C1BE8A15100015674 /* Project object */ = {
+		ECB554841BE9F0AB00A1D267 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Srdan Rasic";
 				TargetAttributes = {
-					ECF535A41BE8A15100015674 = {
-						CreatedOnToolsVersion = 7.0.1;
+					ECB5548C1BE9F0AB00A1D267 = {
+						CreatedOnToolsVersion = 7.1;
 					};
-					ECF535AE1BE8A15100015674 = {
-						CreatedOnToolsVersion = 7.0.1;
+					ECB554961BE9F0AB00A1D267 = {
+						CreatedOnToolsVersion = 7.1;
 					};
 				};
 			};
-			buildConfigurationList = ECF5359F1BE8A15100015674 /* Build configuration list for PBXProject "rUIKit" */;
+			buildConfigurationList = ECB554871BE9F0AB00A1D267 /* Build configuration list for PBXProject "rUIKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = ECF5359B1BE8A15100015674;
-			productRefGroup = ECF535A61BE8A15100015674 /* Products */;
+			mainGroup = ECB554831BE9F0AB00A1D267;
+			productRefGroup = ECB5548E1BE9F0AB00A1D267 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECF535A41BE8A15100015674 /* rUIKit */,
-				ECF535AE1BE8A15100015674 /* rUIKitTests */,
+				ECB5548C1BE9F0AB00A1D267 /* rUIKit */,
+				ECB554961BE9F0AB00A1D267 /* rUIKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		ECF535A31BE8A15100015674 /* Resources */ = {
+		ECB5548B1BE9F0AB00A1D267 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ECF535AD1BE8A15100015674 /* Resources */ = {
+		ECB554951BE9F0AB00A1D267 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,42 +225,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		ECF535A01BE8A15100015674 /* Sources */ = {
+		ECB554881BE9F0AB00A1D267 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF535C01BE8A19C00015674 /* rUILabel.swift in Sources */,
-				ECF535D01BE8A56F00015674 /* rUIProgressView.swift in Sources */,
-				ECF535CA1BE8A4D000015674 /* rUIBarItem.swift in Sources */,
-				ECF535D41BE8A5CB00015674 /* rUIView.swift in Sources */,
-				ECF535CC1BE8A51100015674 /* rUIActivityIndicatorView.swift in Sources */,
-				ECF535D21BE8A59F00015674 /* rUIRefreshControl.swift in Sources */,
-				ECF535CE1BE8A54500015674 /* rUINavigationItem.swift in Sources */,
-				ECF535C81BE8A49500015674 /* rUIImageView.swift in Sources */,
-				ECF535E61BE8A9D700015674 /* rUITableView.swift in Sources */,
+				ECB554BB1BE9F16800A1D267 /* rUITableView.swift in Sources */,
+				ECB554B41BE9F16800A1D267 /* rUIActivityIndicatorView.swift in Sources */,
+				ECB554B71BE9F16800A1D267 /* rUILabel.swift in Sources */,
+				ECB554B61BE9F16800A1D267 /* rUIImageView.swift in Sources */,
+				ECB554B81BE9F16800A1D267 /* rUINavigationItem.swift in Sources */,
+				ECB554BA1BE9F16800A1D267 /* rUIRefreshControl.swift in Sources */,
+				ECB554B91BE9F16800A1D267 /* rUIProgressView.swift in Sources */,
+				ECB554BC1BE9F16800A1D267 /* rUIView.swift in Sources */,
+				ECB554B51BE9F16800A1D267 /* rUIBarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ECF535AB1BE8A15100015674 /* Sources */ = {
+		ECB554931BE9F0AB00A1D267 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF535B51BE8A15100015674 /* rUIKitTests.swift in Sources */,
+				ECB5549D1BE9F0AB00A1D267 /* rUIKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		ECF535B21BE8A15100015674 /* PBXTargetDependency */ = {
+		ECB5549A1BE9F0AB00A1D267 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ECF535A41BE8A15100015674 /* rUIKit */;
-			targetProxy = ECF535B11BE8A15100015674 /* PBXContainerItemProxy */;
+			target = ECB5548C1BE9F0AB00A1D267 /* rUIKit */;
+			targetProxy = ECB554991BE9F0AB00A1D267 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		ECF535B71BE8A15100015674 /* Debug */ = {
+		ECB5549F1BE9F0AB00A1D267 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -308,7 +308,7 @@
 			};
 			name = Debug;
 		};
-		ECF535B81BE8A15100015674 /* Release */ = {
+		ECB554A01BE9F0AB00A1D267 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -349,7 +349,7 @@
 			};
 			name = Release;
 		};
-		ECF535BA1BE8A15100015674 /* Debug */ = {
+		ECB554A21BE9F0AB00A1D267 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -360,7 +360,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					Carthage/Build/iOS,
 				);
 				INFOPLIST_FILE = rUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -372,7 +371,7 @@
 			};
 			name = Debug;
 		};
-		ECF535BB1BE8A15100015674 /* Release */ = {
+		ECB554A31BE9F0AB00A1D267 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -383,7 +382,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					Carthage/Build/iOS,
 				);
 				INFOPLIST_FILE = rUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -394,7 +392,7 @@
 			};
 			name = Release;
 		};
-		ECF535BD1BE8A15100015674 /* Debug */ = {
+		ECB554A51BE9F0AB00A1D267 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = rUIKitTests/Info.plist;
@@ -404,7 +402,7 @@
 			};
 			name = Debug;
 		};
-		ECF535BE1BE8A15100015674 /* Release */ = {
+		ECB554A61BE9F0AB00A1D267 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = rUIKitTests/Info.plist;
@@ -417,34 +415,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ECF5359F1BE8A15100015674 /* Build configuration list for PBXProject "rUIKit" */ = {
+		ECB554871BE9F0AB00A1D267 /* Build configuration list for PBXProject "rUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECF535B71BE8A15100015674 /* Debug */,
-				ECF535B81BE8A15100015674 /* Release */,
+				ECB5549F1BE9F0AB00A1D267 /* Debug */,
+				ECB554A01BE9F0AB00A1D267 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECF535B91BE8A15100015674 /* Build configuration list for PBXNativeTarget "rUIKit" */ = {
+		ECB554A11BE9F0AB00A1D267 /* Build configuration list for PBXNativeTarget "rUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECF535BA1BE8A15100015674 /* Debug */,
-				ECF535BB1BE8A15100015674 /* Release */,
+				ECB554A21BE9F0AB00A1D267 /* Debug */,
+				ECB554A31BE9F0AB00A1D267 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECF535BC1BE8A15100015674 /* Build configuration list for PBXNativeTarget "rUIKitTests" */ = {
+		ECB554A41BE9F0AB00A1D267 /* Build configuration list for PBXNativeTarget "rUIKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECF535BD1BE8A15100015674 /* Debug */,
-				ECF535BE1BE8A15100015674 /* Release */,
+				ECB554A51BE9F0AB00A1D267 /* Debug */,
+				ECB554A61BE9F0AB00A1D267 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = ECF5359C1BE8A15100015674 /* Project object */;
+	rootObject = ECB554841BE9F0AB00A1D267 /* Project object */;
 }
