@@ -10,8 +10,6 @@
 		ECB554911BE9F0AB00A1D267 /* rUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECB554901BE9F0AB00A1D267 /* rUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECB554981BE9F0AB00A1D267 /* rUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB5548D1BE9F0AB00A1D267 /* rUIKit.framework */; };
 		ECB5549D1BE9F0AB00A1D267 /* rUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB5549C1BE9F0AB00A1D267 /* rUIKitTests.swift */; };
-		ECB554A91BE9F15900A1D267 /* rFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB554A71BE9F15900A1D267 /* rFoundation.framework */; };
-		ECB554AA1BE9F15900A1D267 /* rKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB554A81BE9F15900A1D267 /* rKit.framework */; };
 		ECB554B41BE9F16800A1D267 /* rUIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AB1BE9F16800A1D267 /* rUIActivityIndicatorView.swift */; };
 		ECB554B51BE9F16800A1D267 /* rUIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AC1BE9F16800A1D267 /* rUIBarItem.swift */; };
 		ECB554B61BE9F16800A1D267 /* rUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554AD1BE9F16800A1D267 /* rUIImageView.swift */; };
@@ -21,6 +19,8 @@
 		ECB554BA1BE9F16800A1D267 /* rUIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B11BE9F16800A1D267 /* rUIRefreshControl.swift */; };
 		ECB554BB1BE9F16800A1D267 /* rUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B21BE9F16800A1D267 /* rUITableView.swift */; };
 		ECB554BC1BE9F16800A1D267 /* rUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB554B31BE9F16800A1D267 /* rUIView.swift */; };
+		ECB554D41BE9F5C800A1D267 /* rFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB554CD1BE9F5B500A1D267 /* rFoundation.framework */; };
+		ECB554D51BE9F5C800A1D267 /* rKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB554C41BE9F5AA00A1D267 /* rKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +31,48 @@
 			remoteGlobalIDString = ECB5548C1BE9F0AB00A1D267;
 			remoteInfo = rUIKit;
 		};
+		ECB554C31BE9F5AA00A1D267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ECF536AC1BE8F4C000015674;
+			remoteInfo = rKit;
+		};
+		ECB554C51BE9F5AA00A1D267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ECF536B61BE8F4C000015674;
+			remoteInfo = rKitTests;
+		};
+		ECB554CC1BE9F5B500A1D267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16F2A90F1BDCF86500AA0B5F;
+			remoteInfo = rFoundation;
+		};
+		ECB554CE1BE9F5B500A1D267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16F2A9191BDCF86500AA0B5F;
+			remoteInfo = rFoundationTests;
+		};
+		ECB554D01BE9F5C000A1D267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = ECF536AB1BE8F4C000015674;
+			remoteInfo = rKit;
+		};
+		ECB554D21BE9F5C200A1D267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 16F2A90E1BDCF86500AA0B5F;
+			remoteInfo = rFoundation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +82,6 @@
 		ECB554971BE9F0AB00A1D267 /* rUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB5549C1BE9F0AB00A1D267 /* rUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rUIKitTests.swift; sourceTree = "<group>"; };
 		ECB5549E1BE9F0AB00A1D267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECB554A71BE9F15900A1D267 /* rFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rFoundation.framework; path = Carthage/Build/iOS/rFoundation.framework; sourceTree = "<group>"; };
-		ECB554A81BE9F15900A1D267 /* rKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rKit.framework; path = Carthage/Build/iOS/rKit.framework; sourceTree = "<group>"; };
 		ECB554AB1BE9F16800A1D267 /* rUIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIActivityIndicatorView.swift; sourceTree = "<group>"; };
 		ECB554AC1BE9F16800A1D267 /* rUIBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIBarItem.swift; sourceTree = "<group>"; };
 		ECB554AD1BE9F16800A1D267 /* rUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIImageView.swift; sourceTree = "<group>"; };
@@ -51,6 +91,8 @@
 		ECB554B11BE9F16800A1D267 /* rUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIRefreshControl.swift; sourceTree = "<group>"; };
 		ECB554B21BE9F16800A1D267 /* rUITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUITableView.swift; sourceTree = "<group>"; };
 		ECB554B31BE9F16800A1D267 /* rUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rUIView.swift; sourceTree = "<group>"; };
+		ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = rKit.xcodeproj; path = rKit/rKit.xcodeproj; sourceTree = "<group>"; };
+		ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = rFoundation.xcodeproj; path = rFoundation/rFoundation.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECB554A91BE9F15900A1D267 /* rFoundation.framework in Frameworks */,
-				ECB554AA1BE9F15900A1D267 /* rKit.framework in Frameworks */,
+				ECB554D41BE9F5C800A1D267 /* rFoundation.framework in Frameworks */,
+				ECB554D51BE9F5C800A1D267 /* rKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +119,9 @@
 		ECB554831BE9F0AB00A1D267 = {
 			isa = PBXGroup;
 			children = (
-				ECB554A71BE9F15900A1D267 /* rFoundation.framework */,
-				ECB554A81BE9F15900A1D267 /* rKit.framework */,
 				ECB5548F1BE9F0AB00A1D267 /* rUIKit */,
 				ECB5549B1BE9F0AB00A1D267 /* rUIKitTests */,
+				ECB554BD1BE9F5A000A1D267 /* Frameworks */,
 				ECB5548E1BE9F0AB00A1D267 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +162,33 @@
 			path = rUIKitTests;
 			sourceTree = "<group>";
 		};
+		ECB554BD1BE9F5A000A1D267 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */,
+				ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECB554BF1BE9F5AA00A1D267 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECB554C41BE9F5AA00A1D267 /* rKit.framework */,
+				ECB554C61BE9F5AA00A1D267 /* rKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECB554C81BE9F5B500A1D267 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECB554CD1BE9F5B500A1D267 /* rFoundation.framework */,
+				ECB554CF1BE9F5B500A1D267 /* rFoundationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -147,6 +215,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				ECB554D31BE9F5C200A1D267 /* PBXTargetDependency */,
+				ECB554D11BE9F5C000A1D267 /* PBXTargetDependency */,
 			);
 			name = rUIKit;
 			productName = rUIKit;
@@ -199,6 +269,16 @@
 			mainGroup = ECB554831BE9F0AB00A1D267;
 			productRefGroup = ECB5548E1BE9F0AB00A1D267 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ECB554C81BE9F5B500A1D267 /* Products */;
+					ProjectRef = ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */;
+				},
+				{
+					ProductGroup = ECB554BF1BE9F5AA00A1D267 /* Products */;
+					ProjectRef = ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				ECB5548C1BE9F0AB00A1D267 /* rUIKit */,
@@ -206,6 +286,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ECB554C41BE9F5AA00A1D267 /* rKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = rKit.framework;
+			remoteRef = ECB554C31BE9F5AA00A1D267 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ECB554C61BE9F5AA00A1D267 /* rKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = rKitTests.xctest;
+			remoteRef = ECB554C51BE9F5AA00A1D267 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ECB554CD1BE9F5B500A1D267 /* rFoundation.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = rFoundation.framework;
+			remoteRef = ECB554CC1BE9F5B500A1D267 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ECB554CF1BE9F5B500A1D267 /* rFoundationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = rFoundationTests.xctest;
+			remoteRef = ECB554CE1BE9F5B500A1D267 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		ECB5548B1BE9F0AB00A1D267 /* Resources */ = {
@@ -256,6 +367,16 @@
 			isa = PBXTargetDependency;
 			target = ECB5548C1BE9F0AB00A1D267 /* rUIKit */;
 			targetProxy = ECB554991BE9F0AB00A1D267 /* PBXContainerItemProxy */;
+		};
+		ECB554D11BE9F5C000A1D267 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = rKit;
+			targetProxy = ECB554D01BE9F5C000A1D267 /* PBXContainerItemProxy */;
+		};
+		ECB554D31BE9F5C200A1D267 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = rFoundation;
+			targetProxy = ECB554D21BE9F5C200A1D267 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -357,10 +478,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = rUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -379,10 +497,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = rUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

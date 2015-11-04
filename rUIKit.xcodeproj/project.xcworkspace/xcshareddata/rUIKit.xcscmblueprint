@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3D0B0754475AD62D3944895A2A9A27E5BA524909",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "422BABDE4288A2028DC1FD12E5A5767EA1FD5926" : 0,
+    "C1F6A63EF115019142AF6E3E8A173E32E3445DB3" : 0,
+    "3D0B0754475AD62D3944895A2A9A27E5BA524909" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5563FEA3-1F41-4E74-9F4E-CF8CCFA9C822",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "422BABDE4288A2028DC1FD12E5A5767EA1FD5926" : "rUIKit\/rFoundation\/",
+    "C1F6A63EF115019142AF6E3E8A173E32E3445DB3" : "rUIKit\/rKit\/",
+    "3D0B0754475AD62D3944895A2A9A27E5BA524909" : "rUIKit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "rUIKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "rUIKit.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ReactiveKit\/rUIKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D0B0754475AD62D3944895A2A9A27E5BA524909"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ReactiveKit\/rFoundation.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "422BABDE4288A2028DC1FD12E5A5767EA1FD5926"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ReactiveKit\/rKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1F6A63EF115019142AF6E3E8A173E32E3445DB3"
+    }
+  ]
+}

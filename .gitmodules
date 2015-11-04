@@ -1,6 +1,6 @@
-[submodule "Carthage/Checkouts/rKit"]
-	path = Carthage/Checkouts/rKit
-	url = https://github.com/ReactiveKit/rKit.git
-[submodule "Carthage/Checkouts/rFoundation"]
-	path = Carthage/Checkouts/rFoundation
-	url = https://github.com/ReactiveKit/rFoundation.git
+[submodule "rKit"]
+	path = rKit
+	url = git@github.com:ReactiveKit/rKit.git
+[submodule "rFoundation"]
+	path = rFoundation
+	url = git@github.com:ReactiveKit/rFoundation.git
