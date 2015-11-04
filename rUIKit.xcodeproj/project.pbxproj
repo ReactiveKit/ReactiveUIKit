@@ -59,20 +59,6 @@
 			remoteGlobalIDString = 16F2A9191BDCF86500AA0B5F;
 			remoteInfo = rFoundationTests;
 		};
-		ECB554D01BE9F5C000A1D267 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ECB554BE1BE9F5AA00A1D267 /* rKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = ECF536AB1BE8F4C000015674;
-			remoteInfo = rKit;
-		};
-		ECB554D21BE9F5C200A1D267 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ECB554C71BE9F5B500A1D267 /* rFoundation.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 16F2A90E1BDCF86500AA0B5F;
-			remoteInfo = rFoundation;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -215,8 +201,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				ECB554D31BE9F5C200A1D267 /* PBXTargetDependency */,
-				ECB554D11BE9F5C000A1D267 /* PBXTargetDependency */,
 			);
 			name = rUIKit;
 			productName = rUIKit;
@@ -367,16 +351,6 @@
 			isa = PBXTargetDependency;
 			target = ECB5548C1BE9F0AB00A1D267 /* rUIKit */;
 			targetProxy = ECB554991BE9F0AB00A1D267 /* PBXContainerItemProxy */;
-		};
-		ECB554D11BE9F5C000A1D267 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = rKit;
-			targetProxy = ECB554D01BE9F5C000A1D267 /* PBXContainerItemProxy */;
-		};
-		ECB554D31BE9F5C200A1D267 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = rFoundation;
-			targetProxy = ECB554D21BE9F5C200A1D267 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
