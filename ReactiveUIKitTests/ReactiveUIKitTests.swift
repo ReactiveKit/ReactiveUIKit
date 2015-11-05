@@ -1,15 +1,15 @@
 //
-//  rUIKitTests.swift
-//  rUIKitTests
+//  ReactiveUIKitTests.swift
+//  ReactiveUIKitTests
 //
-//  Created by Srdan Rasic on 04/11/15.
+//  Created by Srdan Rasic on 05/11/15.
 //  Copyright © 2015 Srdan Rasic. All rights reserved.
 //
 
 import XCTest
-@testable import rUIKit
+@testable import ReactiveUIKit
 
-class rUIKitTests: XCTestCase {
+class ReactiveUIKitTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

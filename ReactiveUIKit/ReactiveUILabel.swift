@@ -22,13 +22,27 @@
 //  THE SOFTWARE.
 //
 
-import rFoundation
-import rKit
+import ReactiveFoundation
+import ReactiveKit
 import UIKit
 
-extension UIImageView {
+extension UILabel {
   
-  public var rImage: Observable<UIImage?> {
-    return rAssociatedObservableForValueForKey("image")
+  public var rText: Observable<String?> {
+    return rAssociatedObservableForValueForKey("text")
+  }
+  
+  public var rAttributedText: Observable<NSAttributedString?> {
+    return rAssociatedObservableForValueForKey("attributedText")
+  }
+  
+  public var rTextColor: Observable<UIColor?> {
+    return rAssociatedObservableForValueForKey("textColor")
+  }
+}
+
+extension UILabel: BindableType {
+  public func sink(disconnectDisposable: DisposableType?) -> (String? -> ()) {
+    return self.rText.sink(disconnectDisposable)
   }
 }

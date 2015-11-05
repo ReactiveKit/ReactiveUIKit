@@ -22,13 +22,21 @@
 //  THE SOFTWARE.
 //
 
-import rFoundation
-import rKit
+import ReactiveFoundation
+import ReactiveKit
 import UIKit
 
-extension UIProgressView {
+extension UIBarItem {
   
-  public var rProgress: Observable<Float> {
-    return rAssociatedObservableForValueForKey("progress")
+  public var rTitle: Observable<String?> {
+    return rAssociatedObservableForValueForKey("title")
+  }
+  
+  public var rImage: Observable<UIImage?> {
+    return rAssociatedObservableForValueForKey("image")
+  }
+  
+  public var rEnabled: Observable<Bool> {
+    return rAssociatedObservableForValueForKey("enabled")
   }
 }

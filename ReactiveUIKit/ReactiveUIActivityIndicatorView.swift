@@ -22,8 +22,8 @@
 //  THE SOFTWARE.
 //
 
-import rFoundation
-import rKit
+import ReactiveFoundation
+import ReactiveKit
 import UIKit
 
 extension UIActivityIndicatorView {

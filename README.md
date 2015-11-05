@@ -1,10 +1,10 @@
-# rUIKit
+# ReactiveKit
 
-__rKit__ is a collection of Swift frameworks for reactive and functional reactive programming.
+__ReactiveKit__ is a collection of Swift frameworks for reactive and functional reactive programming.
 
-* [rKit](https://github.com/ReactiveKit/rKit) - A core framework that provides cold Stream and hot ActiveStream types and their derivatives -  Tasks, Observable and ObservableCollection types.
-* [rFoundation](https://github.com/ReactiveKit/rFoundation) - Foundation framework extensions like type-safe KVO.
-* [rUIKit](https://github.com/ReactiveKit/rUIKit) - UIKit extensions (bindings).
+* [ReactiveKit](https://github.com/ReactiveKit/ReactiveKit) - A core framework that provides cold Stream and hot ActiveStream types and their derivatives -  Operation, Observable and ObservableCollection types.
+* [ReactiveFoundation](https://github.com/ReactiveKit/ReactiveFoundation) - Foundation framework extensions like type-safe KVO.
+* [ReactiveUIKit](https://github.com/ReactiveKit/ReactiveUIKit) - UIKit extensions (bindings).
 
 ## rUIKit
 
@@ -79,9 +79,9 @@ extension ObservableCollectionType where Collection == Array<Generator.Element> 
 ### Carthage
 
 ```
-github "ReactiveKit/rKit" 
-github "ReactiveKit/rFoundation"
-github "ReactiveKit/rUIKit"
+github "ReactiveKit/ReactiveKit" 
+github "ReactiveKit/ReactiveFoundation"
+github "ReactiveKit/ReactiveUIKit"
 ```
 
 

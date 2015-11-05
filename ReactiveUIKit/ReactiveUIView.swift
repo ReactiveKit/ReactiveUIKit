@@ -22,21 +22,29 @@
 //  THE SOFTWARE.
 //
 
-import rFoundation
-import rKit
+import ReactiveFoundation
+import ReactiveKit
 import UIKit
 
-extension UIBarItem {
+extension UIView {
   
-  public var rTitle: Observable<String?> {
-    return rAssociatedObservableForValueForKey("title")
+  public var rAlpha: Observable<CGFloat> {
+    return rAssociatedObservableForValueForKey("alpha")
   }
   
-  public var rImage: Observable<UIImage?> {
-    return rAssociatedObservableForValueForKey("image")
+  public var rBackgroundColor: Observable<UIColor?> {
+    return rAssociatedObservableForValueForKey("backgroundColor")
   }
   
-  public var rEnabled: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("enabled")
+  public var rHidden: Observable<Bool> {
+    return rAssociatedObservableForValueForKey("hidden")
+  }
+  
+  public var rUserInteractionEnabled: Observable<Bool> {
+    return rAssociatedObservableForValueForKey("userInteractionEnabled")
+  }
+  
+  public var rTintColor: Observable<UIColor?> {
+    return rAssociatedObservableForValueForKey("tintColor")
   }
 }
