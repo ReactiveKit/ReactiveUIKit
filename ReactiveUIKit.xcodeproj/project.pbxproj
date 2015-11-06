@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1666E5141BED0CB40099C86E /* ReactiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1666E5131BED0CB40099C86E /* ReactiveKit.framework */; };
+		1666E5161BED0CBD0099C86E /* ReactiveFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1666E5151BED0CBD0099C86E /* ReactiveFoundation.framework */; };
 		ECB7A5451BEB71E10034053A /* ReactiveUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECB7A54C1BEB71E10034053A /* ReactiveUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7A5411BEB71E10034053A /* ReactiveUIKit.framework */; };
 		ECB7A5511BEB71E10034053A /* ReactiveUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5501BEB71E10034053A /* ReactiveUIKitTests.swift */; };
@@ -29,37 +31,11 @@
 			remoteGlobalIDString = ECB7A5401BEB71E10034053A;
 			remoteInfo = ReactiveUIKit;
 		};
-		ECB7A5731BEB739F0034053A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ECBCCDD01BEB6B9A00723476;
-			remoteInfo = ReactiveKit;
-		};
-		ECB7A5751BEB739F0034053A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ECBCCDDA1BEB6B9B00723476;
-			remoteInfo = ReactiveKitTests;
-		};
-		ECB7A57D1BEB73A70034053A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ECB7A5771BEB73A70034053A /* ReactiveFoundation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ECBCCE3E1BEB6E2B00723476;
-			remoteInfo = ReactiveFoundation;
-		};
-		ECB7A57F1BEB73A70034053A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ECB7A5771BEB73A70034053A /* ReactiveFoundation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ECBCCE481BEB6E2B00723476;
-			remoteInfo = ReactiveFoundationTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1666E5131BED0CB40099C86E /* ReactiveKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveKit.framework; path = "../ReactiveKit/build/Debug-iphoneos/ReactiveKit.framework"; sourceTree = "<group>"; };
+		1666E5151BED0CBD0099C86E /* ReactiveFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveFoundation.framework; path = "../ReactiveFoundation/build/Debug-iphoneos/ReactiveFoundation.framework"; sourceTree = "<group>"; };
 		ECB7A5411BEB71E10034053A /* ReactiveUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveUIKit.h; sourceTree = "<group>"; };
 		ECB7A5461BEB71E10034053A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,8 +51,6 @@
 		ECB7A5611BEB72380034053A /* ReactiveUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIRefreshControl.swift; sourceTree = "<group>"; };
 		ECB7A5621BEB72380034053A /* ReactiveUITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUITableView.swift; sourceTree = "<group>"; };
 		ECB7A5631BEB72380034053A /* ReactiveUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIView.swift; sourceTree = "<group>"; };
-		ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveKit.xcodeproj; path = ReactiveKit/ReactiveKit.xcodeproj; sourceTree = "<group>"; };
-		ECB7A5771BEB73A70034053A /* ReactiveFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveFoundation.xcodeproj; path = ReactiveFoundation/ReactiveFoundation.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1666E5161BED0CBD0099C86E /* ReactiveFoundation.framework in Frameworks */,
+				1666E5141BED0CB40099C86E /* ReactiveKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,28 +123,10 @@
 		ECB7A56D1BEB72740034053A /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */,
-				ECB7A5771BEB73A70034053A /* ReactiveFoundation.xcodeproj */,
+				1666E5151BED0CBD0099C86E /* ReactiveFoundation.framework */,
+				1666E5131BED0CB40099C86E /* ReactiveKit.framework */,
 			);
 			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		ECB7A56F1BEB739F0034053A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ECB7A5741BEB739F0034053A /* ReactiveKit.framework */,
-				ECB7A5761BEB739F0034053A /* ReactiveKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		ECB7A5781BEB73A70034053A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ECB7A57E1BEB73A70034053A /* ReactiveFoundation.framework */,
-				ECB7A5801BEB73A70034053A /* ReactiveFoundationTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,16 +209,6 @@
 			mainGroup = ECB7A5371BEB71E10034053A;
 			productRefGroup = ECB7A5421BEB71E10034053A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = ECB7A5781BEB73A70034053A /* Products */;
-					ProjectRef = ECB7A5771BEB73A70034053A /* ReactiveFoundation.xcodeproj */;
-				},
-				{
-					ProductGroup = ECB7A56F1BEB739F0034053A /* Products */;
-					ProjectRef = ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				ECB7A5401BEB71E10034053A /* ReactiveUIKit */,
@@ -268,37 +216,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		ECB7A5741BEB739F0034053A /* ReactiveKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ReactiveKit.framework;
-			remoteRef = ECB7A5731BEB739F0034053A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		ECB7A5761BEB739F0034053A /* ReactiveKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ReactiveKitTests.xctest;
-			remoteRef = ECB7A5751BEB739F0034053A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		ECB7A57E1BEB73A70034053A /* ReactiveFoundation.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ReactiveFoundation.framework;
-			remoteRef = ECB7A57D1BEB73A70034053A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		ECB7A5801BEB73A70034053A /* ReactiveFoundationTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ReactiveFoundationTests.xctest;
-			remoteRef = ECB7A57F1BEB73A70034053A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		ECB7A53F1BEB71E10034053A /* Resources */ = {
