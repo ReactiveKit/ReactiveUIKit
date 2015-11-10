@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ECB7A5401BEB71E10034053A"
                BuildableName = "ReactiveUIKit.framework"
-               BlueprintName = "ReactiveUIKit"
+               BlueprintName = "ReactiveUIKit-iOS"
                ReferencedContainer = "container:ReactiveUIKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECB7A5401BEB71E10034053A"
             BuildableName = "ReactiveUIKit.framework"
-            BlueprintName = "ReactiveUIKit"
+            BlueprintName = "ReactiveUIKit-iOS"
             ReferencedContainer = "container:ReactiveUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECB7A5401BEB71E10034053A"
             BuildableName = "ReactiveUIKit.framework"
-            BlueprintName = "ReactiveUIKit"
+            BlueprintName = "ReactiveUIKit-iOS"
             ReferencedContainer = "container:ReactiveUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECB7A5401BEB71E10034053A"
             BuildableName = "ReactiveUIKit.framework"
-            BlueprintName = "ReactiveUIKit"
+            BlueprintName = "ReactiveUIKit-iOS"
             ReferencedContainer = "container:ReactiveUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
