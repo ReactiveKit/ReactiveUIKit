@@ -1,14 +1,10 @@
-# ReactiveKit
+# ReactiveUIKit
 
-__ReactiveKit__ is a collection of Swift frameworks for reactive and functional reactive programming.
+ReactiveUIKit is a framework from ReactiveKit collection of frameworks that extends UIKit objects with bindings. Consult ReactiveKit [documentation](https://github.com/ReactiveKit/ReactiveKit) to learn how to work with the Observables it provides.
 
-* [ReactiveKit](https://github.com/ReactiveKit/ReactiveKit) - A core framework that provides cold Stream and hot ActiveStream types and their derivatives -  Operation, Observable and ObservableCollection types.
-* [ReactiveFoundation](https://github.com/ReactiveKit/ReactiveFoundation) - Foundation framework extensions like type-safe KVO.
-* [ReactiveUIKit](https://github.com/ReactiveKit/ReactiveUIKit) - UIKit extensions (bindings).
+All extensions are prefixed with `r` so you can learn them on the fly as you work. Just start typing `.r` on instance of any UIKit object to see what's available.
 
-## rUIKit
-
-Extends UIKit objects with bindings.
+ReactiveUIKit supports iOS and tvOS.
 
 
 ```swift
@@ -20,14 +16,24 @@ extension UILabel {
 ```
 
 ```swift
-extension UIImageView {
-  public var rImage: Observable<UIImage?>
+extension UITextView {
+  public var rText: Observable<String?>
+  public var rAttributedText: Observable<NSAttributedString?>
+  public var rTextColor: Observable<UIColor?>
 }
 ```
 
 ```swift
-extension UIRefreshControl {
-  public var rRefreshing: Observable<Bool>
+extension UITextField {
+  public var rText: Observable<String?>
+  public var rAttributedText: Observable<NSAttributedString?>
+  public var rTextColor: Observable<UIColor?>
+}
+```
+
+```swift
+extension UIImageView {
+  public var rImage: Observable<UIImage?>
 }
 ```
 
@@ -58,6 +64,58 @@ extension UIActivityIndicatorView {
 ```
 
 ```swift
+extension UISlider {
+  public var rValue: Observable<Float>
+}
+```
+
+```swift
+extension UIRefreshControl {
+  public var rRefreshing: Observable<Bool>
+}
+```
+
+```swift
+extension UISwitch {
+  public var rOn: Observable<Bool>
+}
+```
+
+```swift
+extension UISegmentedControl {
+  public var rSelectedSegmentIndex: Observable<Int>
+}
+```
+
+```swift
+extension UIRefreshControl {
+  public var rRefreshing: Observable<Bool>
+}
+```
+
+```swift
+extension UIDatePicker {
+  public var rDate: Observable<NSDate>
+}
+```
+
+```swift
+extension UIButton {
+  public var rTitle: Observable<String?>
+  public var rTap: ActiveStream<Void>
+  public var rSelected: Observable<Bool>
+  public var rHighlighted: Observable<Bool>
+}
+```
+
+```swift
+extension UIControl {
+  public var rControlEvent: ActiveStream<UIControlEvents>
+  public var rEnabled: Observable<Bool>
+}
+```
+
+```swift
 extension UIView {
   public var rAlpha: Observable<CGFloat>
   public var rBackgroundColor: Observable<UIColor?>
@@ -71,6 +129,12 @@ extension UIView {
 ```swift
 extension ObservableCollectionType where Collection == Array<Generator.Element> {
   public func bindTo(tableView: UITableView, createCell: (NSIndexPath, ObservableCollection<Collection>, UITableView) -> UITableViewCell) -> DisposableType
+}
+```
+
+```swift
+extension ObservableCollectionType where Collection == Array<Generator.Element> {
+  public func bindTo(collectionView: UICollectionView, createCell: (NSIndexPath, ObservableCollection<Collection>, UICollectionView) -> UICollectionViewCell) -> DisposableType
 }
 ```
 

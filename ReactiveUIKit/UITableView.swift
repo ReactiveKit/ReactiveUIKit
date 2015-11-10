@@ -85,7 +85,7 @@ public class RKTableViewDataSource<T>: NSObject, UITableViewDataSource {
       if let tableView = tableView {
         RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, dataSource: proxyDataSource)
       }
-    }
+    }.disposeIn(rBag)
   }
   
   private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<[T]>, tableView: UITableView, sectionIndex: Int, dataSource: RKTableViewProxyDataSource?) {
