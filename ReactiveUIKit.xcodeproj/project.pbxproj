@@ -7,21 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC9549321BF1D8A7000FC2BF /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */; };
 		ECB7A5451BEB71E10034053A /* ReactiveUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECB7A54C1BEB71E10034053A /* ReactiveUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7A5411BEB71E10034053A /* ReactiveUIKit.framework */; };
 		ECB7A5511BEB71E10034053A /* ReactiveUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5501BEB71E10034053A /* ReactiveUIKitTests.swift */; };
-		ECB7A5641BEB72380034053A /* ReactiveUIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55B1BEB72380034053A /* ReactiveUIActivityIndicatorView.swift */; };
-		ECB7A5651BEB72380034053A /* ReactiveUIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55C1BEB72380034053A /* ReactiveUIBarItem.swift */; };
-		ECB7A5661BEB72380034053A /* ReactiveUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55D1BEB72380034053A /* ReactiveUIImageView.swift */; };
-		ECB7A5671BEB72380034053A /* ReactiveUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55E1BEB72380034053A /* ReactiveUILabel.swift */; };
-		ECB7A5681BEB72380034053A /* ReactiveUINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55F1BEB72380034053A /* ReactiveUINavigationItem.swift */; };
-		ECB7A5691BEB72380034053A /* ReactiveUIProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5601BEB72380034053A /* ReactiveUIProgressView.swift */; };
-		ECB7A56A1BEB72380034053A /* ReactiveUIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5611BEB72380034053A /* ReactiveUIRefreshControl.swift */; };
-		ECB7A56B1BEB72380034053A /* ReactiveUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5621BEB72380034053A /* ReactiveUITableView.swift */; };
-		ECB7A56C1BEB72380034053A /* ReactiveUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5631BEB72380034053A /* ReactiveUIView.swift */; };
+		ECB7A5641BEB72380034053A /* UIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55B1BEB72380034053A /* UIActivityIndicatorView.swift */; };
+		ECB7A5651BEB72380034053A /* UIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55C1BEB72380034053A /* UIBarItem.swift */; };
+		ECB7A5661BEB72380034053A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55D1BEB72380034053A /* UIImageView.swift */; };
+		ECB7A5671BEB72380034053A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55E1BEB72380034053A /* UILabel.swift */; };
+		ECB7A5681BEB72380034053A /* UINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A55F1BEB72380034053A /* UINavigationItem.swift */; };
+		ECB7A5691BEB72380034053A /* UIProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5601BEB72380034053A /* UIProgressView.swift */; };
+		ECB7A56A1BEB72380034053A /* UIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5611BEB72380034053A /* UIRefreshControl.swift */; };
+		ECB7A56B1BEB72380034053A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5621BEB72380034053A /* UITableView.swift */; };
+		ECB7A56C1BEB72380034053A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5631BEB72380034053A /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EC95492B1BF1D878000FC2BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16C33AF91BEFB72500A0DBE0;
+			remoteInfo = "ReactiveKit-tvOS";
+		};
+		EC95492D1BF1D878000FC2BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16C33B161BEFB9CB00A0DBE0;
+			remoteInfo = "ReactiveKit-watchOS";
+		};
+		EC95492F1BF1D878000FC2BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16C33B241BEFBA0100A0DBE0;
+			remoteInfo = "ReactiveKit-OSX";
+		};
 		ECB7A54D1BEB71E10034053A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ECB7A5381BEB71E10034053A /* Project object */;
@@ -60,21 +82,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ECB7A5411BEB71E10034053A /* ReactiveUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveUIKit.h; sourceTree = "<group>"; };
 		ECB7A5461BEB71E10034053A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECB7A54B1BEB71E10034053A /* ReactiveUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7A5501BEB71E10034053A /* ReactiveUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveUIKitTests.swift; sourceTree = "<group>"; };
 		ECB7A5521BEB71E10034053A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECB7A55B1BEB72380034053A /* ReactiveUIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIActivityIndicatorView.swift; sourceTree = "<group>"; };
-		ECB7A55C1BEB72380034053A /* ReactiveUIBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIBarItem.swift; sourceTree = "<group>"; };
-		ECB7A55D1BEB72380034053A /* ReactiveUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIImageView.swift; sourceTree = "<group>"; };
-		ECB7A55E1BEB72380034053A /* ReactiveUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUILabel.swift; sourceTree = "<group>"; };
-		ECB7A55F1BEB72380034053A /* ReactiveUINavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUINavigationItem.swift; sourceTree = "<group>"; };
-		ECB7A5601BEB72380034053A /* ReactiveUIProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIProgressView.swift; sourceTree = "<group>"; };
-		ECB7A5611BEB72380034053A /* ReactiveUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIRefreshControl.swift; sourceTree = "<group>"; };
-		ECB7A5621BEB72380034053A /* ReactiveUITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUITableView.swift; sourceTree = "<group>"; };
-		ECB7A5631BEB72380034053A /* ReactiveUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUIView.swift; sourceTree = "<group>"; };
+		ECB7A55B1BEB72380034053A /* UIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActivityIndicatorView.swift; sourceTree = "<group>"; };
+		ECB7A55C1BEB72380034053A /* UIBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarItem.swift; sourceTree = "<group>"; };
+		ECB7A55D1BEB72380034053A /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		ECB7A55E1BEB72380034053A /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		ECB7A55F1BEB72380034053A /* UINavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationItem.swift; sourceTree = "<group>"; };
+		ECB7A5601BEB72380034053A /* UIProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProgressView.swift; sourceTree = "<group>"; };
+		ECB7A5611BEB72380034053A /* UIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRefreshControl.swift; sourceTree = "<group>"; };
+		ECB7A5621BEB72380034053A /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		ECB7A5631BEB72380034053A /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		ECB7A56E1BEB739F0034053A /* ReactiveKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveKit.xcodeproj; path = ReactiveKit/ReactiveKit.xcodeproj; sourceTree = "<group>"; };
 		ECB7A5771BEB73A70034053A /* ReactiveFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveFoundation.xcodeproj; path = ReactiveFoundation/ReactiveFoundation.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,15 +144,16 @@
 			isa = PBXGroup;
 			children = (
 				ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */,
-				ECB7A55B1BEB72380034053A /* ReactiveUIActivityIndicatorView.swift */,
-				ECB7A55C1BEB72380034053A /* ReactiveUIBarItem.swift */,
-				ECB7A55D1BEB72380034053A /* ReactiveUIImageView.swift */,
-				ECB7A55E1BEB72380034053A /* ReactiveUILabel.swift */,
-				ECB7A55F1BEB72380034053A /* ReactiveUINavigationItem.swift */,
-				ECB7A5601BEB72380034053A /* ReactiveUIProgressView.swift */,
-				ECB7A5611BEB72380034053A /* ReactiveUIRefreshControl.swift */,
-				ECB7A5621BEB72380034053A /* ReactiveUITableView.swift */,
-				ECB7A5631BEB72380034053A /* ReactiveUIView.swift */,
+				ECB7A5631BEB72380034053A /* UIView.swift */,
+				ECB7A55C1BEB72380034053A /* UIBarItem.swift */,
+				ECB7A55D1BEB72380034053A /* UIImageView.swift */,
+				ECB7A55E1BEB72380034053A /* UILabel.swift */,
+				ECB7A55F1BEB72380034053A /* UINavigationItem.swift */,
+				ECB7A5601BEB72380034053A /* UIProgressView.swift */,
+				ECB7A5611BEB72380034053A /* UIRefreshControl.swift */,
+				ECB7A55B1BEB72380034053A /* UIActivityIndicatorView.swift */,
+				ECB7A5621BEB72380034053A /* UITableView.swift */,
+				EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */,
 				ECB7A5461BEB71E10034053A /* Info.plist */,
 			);
 			path = ReactiveUIKit;
@@ -157,7 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				ECB7A5741BEB739F0034053A /* ReactiveKit.framework */,
-				ECB7A5761BEB739F0034053A /* ReactiveKitTests.xctest */,
+				EC95492C1BF1D878000FC2BF /* ReactiveKit.framework */,
+				EC95492E1BF1D878000FC2BF /* ReactiveKit.framework */,
+				EC9549301BF1D878000FC2BF /* ReactiveKit.framework */,
+				ECB7A5761BEB739F0034053A /* ReactiveKit-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +297,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		EC95492C1BF1D878000FC2BF /* ReactiveKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveKit.framework;
+			remoteRef = EC95492B1BF1D878000FC2BF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EC95492E1BF1D878000FC2BF /* ReactiveKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveKit.framework;
+			remoteRef = EC95492D1BF1D878000FC2BF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EC9549301BF1D878000FC2BF /* ReactiveKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveKit.framework;
+			remoteRef = EC95492F1BF1D878000FC2BF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ECB7A5741BEB739F0034053A /* ReactiveKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -277,10 +325,10 @@
 			remoteRef = ECB7A5731BEB739F0034053A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		ECB7A5761BEB739F0034053A /* ReactiveKitTests.xctest */ = {
+		ECB7A5761BEB739F0034053A /* ReactiveKit-iOSTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ReactiveKitTests.xctest;
+			path = "ReactiveKit-iOSTests.xctest";
 			remoteRef = ECB7A5751BEB739F0034053A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -322,15 +370,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECB7A56B1BEB72380034053A /* ReactiveUITableView.swift in Sources */,
-				ECB7A5641BEB72380034053A /* ReactiveUIActivityIndicatorView.swift in Sources */,
-				ECB7A5681BEB72380034053A /* ReactiveUINavigationItem.swift in Sources */,
-				ECB7A5671BEB72380034053A /* ReactiveUILabel.swift in Sources */,
-				ECB7A56C1BEB72380034053A /* ReactiveUIView.swift in Sources */,
-				ECB7A5651BEB72380034053A /* ReactiveUIBarItem.swift in Sources */,
-				ECB7A5691BEB72380034053A /* ReactiveUIProgressView.swift in Sources */,
-				ECB7A5661BEB72380034053A /* ReactiveUIImageView.swift in Sources */,
-				ECB7A56A1BEB72380034053A /* ReactiveUIRefreshControl.swift in Sources */,
+				EC9549321BF1D8A7000FC2BF /* UICollectionView.swift in Sources */,
+				ECB7A56B1BEB72380034053A /* UITableView.swift in Sources */,
+				ECB7A5641BEB72380034053A /* UIActivityIndicatorView.swift in Sources */,
+				ECB7A5681BEB72380034053A /* UINavigationItem.swift in Sources */,
+				ECB7A5671BEB72380034053A /* UILabel.swift in Sources */,
+				ECB7A56C1BEB72380034053A /* UIView.swift in Sources */,
+				ECB7A5651BEB72380034053A /* UIBarItem.swift in Sources */,
+				ECB7A5691BEB72380034053A /* UIProgressView.swift in Sources */,
+				ECB7A5661BEB72380034053A /* UIImageView.swift in Sources */,
+				ECB7A56A1BEB72380034053A /* UIRefreshControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

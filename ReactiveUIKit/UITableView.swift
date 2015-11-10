@@ -81,8 +81,10 @@ public class RKTableViewDataSource<T>: NSObject, UITableViewDataSource {
     tableView.dataSource = self
     tableView.reloadData()
     
-    array.observe(on: ImmediateExecutionContext) { event in
-      RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: self.tableView, sectionIndex: 0, dataSource: proxyDataSource)
+    array.observe(on: ImmediateExecutionContext) { [weak tableView] event in
+      if let tableView = tableView {
+        RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, dataSource: proxyDataSource)
+      }
     }
   }
   
