@@ -22,26 +22,51 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
+#if os(iOS)
+  
 import ReactiveKit
 import UIKit
 
-extension UIActivityIndicatorView {
+extension UISwitch {
   
-  public var rAnimating: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("isAnimating", initial: self.isAnimating()) { [weak self] animating in
-      if animating {
-        self?.startAnimating()
-      } else {
-        self?.stopAnimating()
+  private struct AssociatedKeys {
+    static var OnKey = "r_OnKey"
+  }
+  
+  public var rOn: Observable<Bool> {
+    if let rOn: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.OnKey) {
+      return rOn as! Observable<Bool>
+    } else {
+      let rOn = Observable<Bool>(self.on)
+      objc_setAssociatedObject(self, &AssociatedKeys.OnKey, rOn, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      
+      var updatingFromSelf: Bool = false
+      
+      rOn.observe { [weak self] on in
+        if !updatingFromSelf {
+          self?.on = on
+        }
       }
+      
+      self.rControlEvent
+        .filter { $0 == UIControlEvents.ValueChanged }
+        .observe(on: ImmediateExecutionContext) { [weak self] event in
+          guard let unwrappedSelf = self else { return }
+          updatingFromSelf = true
+          unwrappedSelf.rOn.value = unwrappedSelf.on
+          updatingFromSelf = false
+        }
+      
+      return rOn
     }
   }
 }
-
-extension UIActivityIndicatorView: BindableType {
+  
+extension UISwitch: BindableType {
   
   public func sink(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rAnimating.sink(disconnectDisposable)
+    return self.rOn.sink(disconnectDisposable)
   }
 }
+
+#endif

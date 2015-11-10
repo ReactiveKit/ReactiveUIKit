@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		EC9549321BF1D8A7000FC2BF /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */; };
+		EC9549341BF1DC52000FC2BF /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549331BF1DC52000FC2BF /* UIControl.swift */; };
+		EC9549361BF1DE78000FC2BF /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549351BF1DE78000FC2BF /* UIButton.swift */; };
+		EC9549381BF1DEEE000FC2BF /* UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549371BF1DEEE000FC2BF /* UIDatePicker.swift */; };
+		EC95493A1BF1E12E000FC2BF /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549391BF1E12E000FC2BF /* UISegmentedControl.swift */; };
+		EC95493C1BF1E204000FC2BF /* UISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC95493B1BF1E204000FC2BF /* UISlider.swift */; };
+		EC95493E1BF1E286000FC2BF /* UISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC95493D1BF1E286000FC2BF /* UISwitch.swift */; };
+		EC9549401BF1E31A000FC2BF /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC95493F1BF1E31A000FC2BF /* UITextField.swift */; };
+		EC9549421BF1E408000FC2BF /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549411BF1E408000FC2BF /* UITextView.swift */; };
 		ECB7A5451BEB71E10034053A /* ReactiveUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECB7A54C1BEB71E10034053A /* ReactiveUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7A5411BEB71E10034053A /* ReactiveUIKit.framework */; };
 		ECB7A5511BEB71E10034053A /* ReactiveUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB7A5501BEB71E10034053A /* ReactiveUIKitTests.swift */; };
@@ -83,6 +91,14 @@
 
 /* Begin PBXFileReference section */
 		EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		EC9549331BF1DC52000FC2BF /* UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
+		EC9549351BF1DE78000FC2BF /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		EC9549371BF1DEEE000FC2BF /* UIDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDatePicker.swift; sourceTree = "<group>"; };
+		EC9549391BF1E12E000FC2BF /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
+		EC95493B1BF1E204000FC2BF /* UISlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISlider.swift; sourceTree = "<group>"; };
+		EC95493D1BF1E286000FC2BF /* UISwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISwitch.swift; sourceTree = "<group>"; };
+		EC95493F1BF1E31A000FC2BF /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		EC9549411BF1E408000FC2BF /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		ECB7A5411BEB71E10034053A /* ReactiveUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveUIKit.h; sourceTree = "<group>"; };
 		ECB7A5461BEB71E10034053A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,10 +166,18 @@
 				ECB7A55E1BEB72380034053A /* UILabel.swift */,
 				ECB7A55F1BEB72380034053A /* UINavigationItem.swift */,
 				ECB7A5601BEB72380034053A /* UIProgressView.swift */,
-				ECB7A5611BEB72380034053A /* UIRefreshControl.swift */,
 				ECB7A55B1BEB72380034053A /* UIActivityIndicatorView.swift */,
 				ECB7A5621BEB72380034053A /* UITableView.swift */,
 				EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */,
+				EC9549331BF1DC52000FC2BF /* UIControl.swift */,
+				EC9549351BF1DE78000FC2BF /* UIButton.swift */,
+				EC9549371BF1DEEE000FC2BF /* UIDatePicker.swift */,
+				ECB7A5611BEB72380034053A /* UIRefreshControl.swift */,
+				EC9549391BF1E12E000FC2BF /* UISegmentedControl.swift */,
+				EC95493B1BF1E204000FC2BF /* UISlider.swift */,
+				EC95493D1BF1E286000FC2BF /* UISwitch.swift */,
+				EC95493F1BF1E31A000FC2BF /* UITextField.swift */,
+				EC9549411BF1E408000FC2BF /* UITextView.swift */,
 				ECB7A5461BEB71E10034053A /* Info.plist */,
 			);
 			path = ReactiveUIKit;
@@ -370,16 +394,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC95493C1BF1E204000FC2BF /* UISlider.swift in Sources */,
 				EC9549321BF1D8A7000FC2BF /* UICollectionView.swift in Sources */,
 				ECB7A56B1BEB72380034053A /* UITableView.swift in Sources */,
 				ECB7A5641BEB72380034053A /* UIActivityIndicatorView.swift in Sources */,
 				ECB7A5681BEB72380034053A /* UINavigationItem.swift in Sources */,
+				EC9549381BF1DEEE000FC2BF /* UIDatePicker.swift in Sources */,
 				ECB7A5671BEB72380034053A /* UILabel.swift in Sources */,
+				EC95493A1BF1E12E000FC2BF /* UISegmentedControl.swift in Sources */,
+				EC9549341BF1DC52000FC2BF /* UIControl.swift in Sources */,
+				EC95493E1BF1E286000FC2BF /* UISwitch.swift in Sources */,
 				ECB7A56C1BEB72380034053A /* UIView.swift in Sources */,
 				ECB7A5651BEB72380034053A /* UIBarItem.swift in Sources */,
 				ECB7A5691BEB72380034053A /* UIProgressView.swift in Sources */,
+				EC9549421BF1E408000FC2BF /* UITextView.swift in Sources */,
 				ECB7A5661BEB72380034053A /* UIImageView.swift in Sources */,
 				ECB7A56A1BEB72380034053A /* UIRefreshControl.swift in Sources */,
+				EC9549401BF1E31A000FC2BF /* UITextField.swift in Sources */,
+				EC9549361BF1DE78000FC2BF /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

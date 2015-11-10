@@ -32,3 +32,10 @@ extension UIProgressView {
     return rAssociatedObservableForValueForKey("progress")
   }
 }
+
+extension UIProgressView: BindableType {
+  
+  public func sink(disconnectDisposable: DisposableType?) -> (Float -> ()) {
+    return self.rProgress.sink(disconnectDisposable)
+  }
+}

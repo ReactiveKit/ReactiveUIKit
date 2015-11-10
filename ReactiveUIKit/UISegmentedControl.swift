@@ -22,49 +22,49 @@
 //  THE SOFTWARE.
 //
 
-#if os(iOS)
-  
-import ReactiveFoundation
+
 import ReactiveKit
 import UIKit
 
-extension UIRefreshControl {
+extension UISegmentedControl {
   
   private struct AssociatedKeys {
-    static var RefreshingKey = "r_RefreshingKey"
+    static var SelectedSegmentIndexKey = "r_SelectedSegmentIndexKey"
   }
   
-  public var rRefreshing: Observable<Bool> {
-    if let rRefreshing: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.RefreshingKey) {
-      return rRefreshing as! Observable<Bool>
+  public var rSelectedSegmentIndex: Observable<Int> {
+    if let rSelectedSegmentIndex: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.SelectedSegmentIndexKey) {
+      return rSelectedSegmentIndex as! Observable<Int>
     } else {
-      let rRefreshing = Observable<Bool>(self.refreshing)
-      objc_setAssociatedObject(self, &AssociatedKeys.RefreshingKey, rRefreshing, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      let rSelectedSegmentIndex = Observable<Int>(self.selectedSegmentIndex)
+      objc_setAssociatedObject(self, &AssociatedKeys.SelectedSegmentIndexKey, rSelectedSegmentIndex, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       
       var updatingFromSelf: Bool = false
       
-      rRefreshing.observe { [weak self] (value: Bool) in
+      rSelectedSegmentIndex.observe { [weak self] selectedSegmentIndex in
         if !updatingFromSelf {
-          if value {
-            self?.beginRefreshing()
-          } else {
-            self?.endRefreshing()
-          }
+          self?.selectedSegmentIndex = selectedSegmentIndex
         }
       }
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateExecutionContext) { [weak rRefreshing] event in
-          guard let rRefreshing = rRefreshing else { return }
+        .observe(on: ImmediateExecutionContext) { [weak self] event in
+          guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
-          rRefreshing.value = true
+          unwrappedSelf.rSelectedSegmentIndex.value = unwrappedSelf.selectedSegmentIndex
           updatingFromSelf = false
-      }
+        }
       
-      return rRefreshing
+      return rSelectedSegmentIndex
     }
   }
 }
 
-#endif
+extension UISegmentedControl: BindableType {
+  
+  public func sink(disconnectDisposable: DisposableType?) -> (Int -> ()) {
+    return self.rSelectedSegmentIndex.sink(disconnectDisposable)
+  }
+}
+  

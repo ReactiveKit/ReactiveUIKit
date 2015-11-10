@@ -22,26 +22,51 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
+#if os(iOS)
+
 import ReactiveKit
 import UIKit
 
-extension UIActivityIndicatorView {
+extension UISlider {
   
-  public var rAnimating: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("isAnimating", initial: self.isAnimating()) { [weak self] animating in
-      if animating {
-        self?.startAnimating()
-      } else {
-        self?.stopAnimating()
+  private struct AssociatedKeys {
+    static var ValueKey = "r_ValueKey"
+  }
+  
+  public var rValue: Observable<Float> {
+    if let rValue: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.ValueKey) {
+      return rValue as! Observable<Float>
+    } else {
+      let rValue = Observable<Float>(self.value)
+      objc_setAssociatedObject(self, &AssociatedKeys.ValueKey, rValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      
+      var updatingFromSelf: Bool = false
+      
+      rValue.observe { [weak self] value in
+        if !updatingFromSelf {
+          self?.value = value
+        }
       }
+      
+      self.rControlEvent
+        .filter { $0 == UIControlEvents.ValueChanged }
+        .observe(on: ImmediateExecutionContext) { [weak self] event in
+          guard let unwrappedSelf = self else { return }
+          updatingFromSelf = true
+          unwrappedSelf.rValue.value = unwrappedSelf.value
+          updatingFromSelf = false
+        }
+      
+      return rValue
     }
   }
 }
-
-extension UIActivityIndicatorView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rAnimating.sink(disconnectDisposable)
+extension UISlider: BindableType {
+    
+  public func sink(disconnectDisposable: DisposableType?) -> (Float -> ()) {
+    return self.rValue.sink(disconnectDisposable)
   }
 }
+
+#endif

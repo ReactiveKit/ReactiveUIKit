@@ -22,26 +22,53 @@
 //  THE SOFTWARE.
 //
 
+#if os(iOS)
+  
 import ReactiveFoundation
 import ReactiveKit
 import UIKit
-
-extension UIActivityIndicatorView {
   
-  public var rAnimating: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("isAnimating", initial: self.isAnimating()) { [weak self] animating in
-      if animating {
-        self?.startAnimating()
-      } else {
-        self?.stopAnimating()
+extension UIDatePicker {
+  
+  private struct AssociatedKeys {
+    static var DateKey = "r_DateKey"
+  }
+  
+  public var rDate: Observable<NSDate> {
+    if let rDate: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.DateKey) {
+      return rDate as! Observable<NSDate>
+    } else {
+      let rDate = Observable<NSDate>(self.date)
+      objc_setAssociatedObject(self, &AssociatedKeys.DateKey, rDate, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      
+      var updatingFromSelf: Bool = false
+      
+      rDate.observe { [weak self] (date: NSDate) in
+        if !updatingFromSelf {
+          self?.date = date
+        }
       }
+      
+      self.rControlEvent
+        .filter { $0 == UIControlEvents.ValueChanged }
+        .observe(on: ImmediateExecutionContext) { [weak self] event in
+          guard let unwrappedSelf = self else { return }
+          updatingFromSelf = true
+          unwrappedSelf.rDate.value = unwrappedSelf.date
+          updatingFromSelf = false
+        }
+      
+      return rDate
     }
   }
 }
-
-extension UIActivityIndicatorView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rAnimating.sink(disconnectDisposable)
+extension UIDatePicker: BindableType {
+  
+  public func sink(disconnectDisposable: DisposableType?) -> (NSDate -> ()) {
+    return self.rDate.sink(disconnectDisposable)
   }
 }
+
+
+#endif

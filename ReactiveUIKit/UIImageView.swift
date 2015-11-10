@@ -32,3 +32,10 @@ extension UIImageView {
     return rAssociatedObservableForValueForKey("image")
   }
 }
+
+extension UIImageView: BindableType {
+  
+  public func sink(disconnectDisposable: DisposableType?) -> (UIImage? -> ()) {
+    return self.rImage.sink(disconnectDisposable)
+  }
+}

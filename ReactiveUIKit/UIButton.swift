@@ -26,22 +26,23 @@ import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UIActivityIndicatorView {
+extension UIButton {
   
-  public var rAnimating: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("isAnimating", initial: self.isAnimating()) { [weak self] animating in
-      if animating {
-        self?.startAnimating()
-      } else {
-        self?.stopAnimating()
-      }
+  public var rTitle: Observable<String?> {
+    return rAssociatedObservableForValueForKey("title", initial: self.titleLabel?.text) { [weak self] title in
+      self?.setTitle(title, forState: UIControlState.Normal)
     }
   }
-}
-
-extension UIActivityIndicatorView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rAnimating.sink(disconnectDisposable)
+  public var rTap: ActiveStream<Void> {
+    return self.rControlEvent.filter { $0 == UIControlEvents.TouchUpInside }.map { e in }.share()
+  }
+  
+  public var rSelected: Observable<Bool> {
+    return rAssociatedObservableForValueForKey("selected")
+  }
+  
+  public var rHighlighted: Observable<Bool> {
+    return rAssociatedObservableForValueForKey("highlighted")
   }
 }
