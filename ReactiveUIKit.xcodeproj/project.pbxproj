@@ -64,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16E125A11BF5056C00543EFB /* ReactiveUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReactiveUIKit.podspec; sourceTree = "<group>"; };
+		16E125A21BF5056C00543EFB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		EC9549331BF1DC52000FC2BF /* UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		EC9549351BF1DE78000FC2BF /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 		ECB7A5371BEB71E10034053A = {
 			isa = PBXGroup;
 			children = (
+				16E125A21BF5056C00543EFB /* README.md */,
+				16E125A11BF5056C00543EFB /* ReactiveUIKit.podspec */,
 				ECB7A5431BEB71E10034053A /* ReactiveUIKit */,
 				ECB7A54F1BEB71E10034053A /* ReactiveUIKitTests */,
 				EC9549BE1BF1F227000FC2BF /* Dependencies */,
@@ -280,11 +284,9 @@
 				TargetAttributes = {
 					EC9549471BF1EA7A000FC2BF = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 7483NBERMM;
 					};
 					ECB7A5401BEB71E10034053A = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 7483NBERMM;
 					};
 					ECB7A54A1BEB71E10034053A = {
 						CreatedOnToolsVersion = 7.1;
@@ -408,6 +410,7 @@
 		EC95495A1BF1EA7A000FC2BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -427,6 +430,7 @@
 		EC95495B1BF1EA7A000FC2BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -536,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -554,6 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

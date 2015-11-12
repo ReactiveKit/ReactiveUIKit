@@ -140,14 +140,21 @@ extension ObservableCollectionType where Collection == Array<Generator.Element> 
 
 ## Installation
 
+### CocoaPods
+
+```
+pod 'ReactiveKit', '~> 1.0'
+pod 'ReactiveUIKit', '~> 1.0'
+pod 'ReactiveFoundation', '~> 1.0'
+```
+
 ### Carthage
 
 ```
 github "ReactiveKit/ReactiveKit" 
-github "ReactiveKit/ReactiveFoundation"
 github "ReactiveKit/ReactiveUIKit"
+github "ReactiveKit/ReactiveFoundation"
 ```
-
 
 ## License
 
