@@ -33,9 +33,9 @@ extension UITableView {
 }
 
 extension ObservableCollectionType where Collection.Index == Int {
-  public func bindTo(tableView: UITableView, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell) -> DisposableType {
+  public func bindTo(tableView: UITableView, animated: Bool = true, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell) -> DisposableType {
     
-    let dataSource = RKTableViewDataSource(collection: self, tableView: tableView, proxyDataSource: proxyDataSource, createCell: createCell)
+    let dataSource = RKTableViewDataSource(collection: self, tableView: tableView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
     objc_setAssociatedObject(tableView, &UITableView.AssociatedKeys.DataSourceKey, dataSource, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     
     return BlockDisposable { [weak tableView] in
@@ -69,12 +69,14 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
   private weak var tableView: UITableView!
   private let createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell
   private weak var proxyDataSource: RKTableViewProxyDataSource?
+  private let animated: Bool
   
-  public init(collection: C, tableView: UITableView, proxyDataSource: RKTableViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell) {
+  public init(collection: C, tableView: UITableView, animated: Bool, proxyDataSource: RKTableViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell) {
     self.tableView = tableView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
     self.collection = collection
+    self.animated = animated
     super.init()
     
     tableView.dataSource = self
@@ -82,9 +84,13 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
     
     collection.observe(on: Queue.main.context) { [weak tableView] event in
       if let tableView = tableView {
-        tableView.beginUpdates()
-        RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, dataSource: proxyDataSource)
-        tableView.endUpdates()
+        if animated {
+          tableView.beginUpdates()
+          RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, dataSource: proxyDataSource)
+          tableView.endUpdates()
+        } else {
+          tableView.reloadData()
+        }
       }
     }.disposeIn(rBag)
   }

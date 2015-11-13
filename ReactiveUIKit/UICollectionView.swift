@@ -33,9 +33,9 @@ extension UICollectionView {
 }
 
 extension ObservableCollectionType where Collection.Index == Int {
-  public func bindTo(collectionView: UICollectionView, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell) -> DisposableType {
+  public func bindTo(collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell) -> DisposableType {
     
-    let dataSource = RKCollectionViewDataSource(collection: self, collectionView: collectionView, proxyDataSource: proxyDataSource, createCell: createCell)
+    let dataSource = RKCollectionViewDataSource(collection: self, collectionView: collectionView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
     objc_setAssociatedObject(collectionView, &UICollectionView.AssociatedKeys.DataSourceKey, dataSource, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     
     return BlockDisposable { [weak collectionView] in
@@ -58,12 +58,14 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
   private weak var collectionView: UICollectionView!
   private let createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell
   private weak var proxyDataSource: RKCollectionViewProxyDataSource?
+  private let animated: Bool
   
-  public init(collection: C, collectionView: UICollectionView, proxyDataSource: RKCollectionViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell) {
+  public init(collection: C, collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell) {
     self.collectionView = collectionView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
     self.collection = collection
+    self.animated = animated
     super.init()
     
     collectionView.dataSource = self
@@ -71,9 +73,13 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
     
     collection.observe(on: Queue.main.context) { [weak collectionView] event in
       if let collectionView = collectionView {
-        collectionView.performBatchUpdates({
-          RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: collectionView, sectionIndex: 0, dataSource: proxyDataSource)
-        }, completion: nil)
+        if animated {
+          collectionView.performBatchUpdates({
+            RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: collectionView, sectionIndex: 0, dataSource: proxyDataSource)
+            }, completion: nil)
+        } else {
+          collectionView.reloadData()
+        }
       }
     }.disposeIn(rBag)
   }
