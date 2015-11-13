@@ -32,11 +32,10 @@ extension UICollectionView {
   }
 }
 
-extension ObservableCollectionType where Collection == Array<Generator.Element> {
-  public func bindTo(collectionView: UICollectionView, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, ObservableCollection<Collection>, UICollectionView) -> UICollectionViewCell) -> DisposableType {
-    let array = self as! ObservableCollection<Collection>
+extension ObservableCollectionType where Collection.Index == Int {
+  public func bindTo(collectionView: UICollectionView, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell) -> DisposableType {
     
-    let dataSource = RKCollectionViewDataSource(array: array, collectionView: collectionView, proxyDataSource: proxyDataSource, createCell: createCell)
+    let dataSource = RKCollectionViewDataSource(collection: self, collectionView: collectionView, proxyDataSource: proxyDataSource, createCell: createCell)
     objc_setAssociatedObject(collectionView, &UICollectionView.AssociatedKeys.DataSourceKey, dataSource, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     
     return BlockDisposable { [weak collectionView] in
@@ -53,31 +52,33 @@ extension ObservableCollectionType where Collection == Array<Generator.Element> 
   optional func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
 }
 
-public class RKCollectionViewDataSource<T>: NSObject, UICollectionViewDataSource {
+public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int>: NSObject, UICollectionViewDataSource {
   
-  private let array: ObservableCollection<[T]>
+  private let collection: C
   private weak var collectionView: UICollectionView!
-  private let createCell: (NSIndexPath, ObservableCollection<[T]>, UICollectionView) -> UICollectionViewCell
+  private let createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell
   private weak var proxyDataSource: RKCollectionViewProxyDataSource?
   
-  public init(array: ObservableCollection<[T]>, collectionView: UICollectionView, proxyDataSource: RKCollectionViewProxyDataSource?, createCell: (NSIndexPath, ObservableCollection<[T]>, UICollectionView) -> UICollectionViewCell) {
+  public init(collection: C, collectionView: UICollectionView, proxyDataSource: RKCollectionViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell) {
     self.collectionView = collectionView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
-    self.array = array
+    self.collection = collection
     super.init()
     
     collectionView.dataSource = self
     collectionView.reloadData()
     
-    array.observe(on: ImmediateExecutionContext) { [weak collectionView] event in
+    collection.observe(on: Queue.main.context) { [weak collectionView] event in
       if let collectionView = collectionView {
-        RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: collectionView, sectionIndex: 0, dataSource: proxyDataSource)
+        collectionView.performBatchUpdates({
+          RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: collectionView, sectionIndex: 0, dataSource: proxyDataSource)
+        }, completion: nil)
       }
     }.disposeIn(rBag)
   }
   
-  private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<[T]>, collectionView: UICollectionView, sectionIndex: Int, dataSource: RKCollectionViewProxyDataSource?) {
+  private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<C.Collection>, collectionView: UICollectionView, sectionIndex: Int, dataSource: RKCollectionViewProxyDataSource?) {
     
     if changeSet.inserts.count > 0 {
       let indexPaths = changeSet.inserts.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
@@ -102,11 +103,11 @@ public class RKCollectionViewDataSource<T>: NSObject, UICollectionViewDataSource
   }
   
   @objc public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return array.count
+    return collection.collection.count
   }
   
   @objc public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    return createCell(indexPath, array, collectionView)
+    return createCell(indexPath, collection.collection, collectionView)
   }
   
   @objc public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {

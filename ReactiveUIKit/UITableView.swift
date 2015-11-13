@@ -32,11 +32,10 @@ extension UITableView {
   }
 }
 
-extension ObservableCollectionType where Collection == Array<Generator.Element> {
-  public func bindTo(tableView: UITableView, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, ObservableCollection<Collection>, UITableView) -> UITableViewCell) -> DisposableType {
-    let array = self as! ObservableCollection<Collection>
+extension ObservableCollectionType where Collection.Index == Int {
+  public func bindTo(tableView: UITableView, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell) -> DisposableType {
     
-    let dataSource = RKTableViewDataSource(array: array, tableView: tableView, proxyDataSource: proxyDataSource, createCell: createCell)
+    let dataSource = RKTableViewDataSource(collection: self, tableView: tableView, proxyDataSource: proxyDataSource, createCell: createCell)
     objc_setAssociatedObject(tableView, &UITableView.AssociatedKeys.DataSourceKey, dataSource, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     
     return BlockDisposable { [weak tableView] in
@@ -64,31 +63,33 @@ extension ObservableCollectionType where Collection == Array<Generator.Element> 
   optional func tableView(tableView: UITableView, animationForRowInSections sections: Set<Int>) -> UITableViewRowAnimation
 }
 
-public class RKTableViewDataSource<T>: NSObject, UITableViewDataSource {
+public class RKTableViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int>: NSObject, UITableViewDataSource {
   
-  private let array: ObservableCollection<[T]>
+  private let collection: C
   private weak var tableView: UITableView!
-  private let createCell: (NSIndexPath, ObservableCollection<[T]>, UITableView) -> UITableViewCell
+  private let createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell
   private weak var proxyDataSource: RKTableViewProxyDataSource?
   
-  public init(array: ObservableCollection<[T]>, tableView: UITableView, proxyDataSource: RKTableViewProxyDataSource?, createCell: (NSIndexPath, ObservableCollection<[T]>, UITableView) -> UITableViewCell) {
+  public init(collection: C, tableView: UITableView, proxyDataSource: RKTableViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell) {
     self.tableView = tableView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
-    self.array = array
+    self.collection = collection
     super.init()
     
     tableView.dataSource = self
     tableView.reloadData()
     
-    array.observe(on: ImmediateExecutionContext) { [weak tableView] event in
+    collection.observe(on: Queue.main.context) { [weak tableView] event in
       if let tableView = tableView {
+        tableView.beginUpdates()
         RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, dataSource: proxyDataSource)
+        tableView.endUpdates()
       }
     }.disposeIn(rBag)
   }
   
-  private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<[T]>, tableView: UITableView, sectionIndex: Int, dataSource: RKTableViewProxyDataSource?) {
+  private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<C.Collection>, tableView: UITableView, sectionIndex: Int, dataSource: RKTableViewProxyDataSource?) {
     
     if changeSet.inserts.count > 0 {
       let indexPaths = changeSet.inserts.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
@@ -113,11 +114,11 @@ public class RKTableViewDataSource<T>: NSObject, UITableViewDataSource {
   }
   
   @objc public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return array.count
+    return collection.collection.count
   }
   
   @objc public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    return createCell(indexPath, array, tableView)
+    return createCell(indexPath, collection.collection, tableView)
   }
   
   @objc public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
