@@ -65,8 +65,8 @@ extension UIDatePicker {
   
 extension UIDatePicker: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (NSDate -> ()) {
-    return self.rDate.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (NSDate -> ()) {
+    return self.rDate.observer(disconnectDisposable)
   }
 }
 

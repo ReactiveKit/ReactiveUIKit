@@ -41,7 +41,7 @@ extension UIActivityIndicatorView {
 
 extension UIActivityIndicatorView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rAnimating.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
+    return self.rAnimating.observer(disconnectDisposable)
   }
 }

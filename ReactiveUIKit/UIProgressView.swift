@@ -35,7 +35,7 @@ extension UIProgressView {
 
 extension UIProgressView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Float -> ()) {
-    return self.rProgress.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (Float -> ()) {
+    return self.rProgress.observer(disconnectDisposable)
   }
 }

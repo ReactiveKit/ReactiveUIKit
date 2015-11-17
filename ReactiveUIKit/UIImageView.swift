@@ -35,7 +35,7 @@ extension UIImageView {
 
 extension UIImageView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (UIImage? -> ()) {
-    return self.rImage.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (UIImage? -> ()) {
+    return self.rImage.observer(disconnectDisposable)
   }
 }

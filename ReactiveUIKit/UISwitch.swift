@@ -64,8 +64,8 @@ extension UISwitch {
   
 extension UISwitch: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rOn.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
+    return self.rOn.observer(disconnectDisposable)
   }
 }
 

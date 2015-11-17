@@ -29,11 +29,11 @@ import ReactiveFoundation
 @objc class RKUIControlHelper: NSObject
 {
   weak var control: UIControl?
-  let sink: UIControlEvents -> Void
+  let observer: UIControlEvents -> Void
   
-  init(control: UIControl, sink: UIControlEvents -> Void) {
+  init(control: UIControl, observer: UIControlEvents -> Void) {
     self.control = control
-    self.sink = sink
+    self.observer = observer
     super.init()
     control.addTarget(self, action: Selector("eventHandlerTouchDown"), forControlEvents: UIControlEvents.TouchDown)
     control.addTarget(self, action: Selector("eventHandlerTouchDownRepeat"), forControlEvents: UIControlEvents.TouchDownRepeat)
@@ -52,59 +52,59 @@ import ReactiveFoundation
   }
   
   func eventHandlerTouchDown() {
-    sink(.TouchDown)
+    observer(.TouchDown)
   }
   
   func eventHandlerTouchDownRepeat() {
-    sink(.TouchDownRepeat)
+    observer(.TouchDownRepeat)
   }
   
   func eventHandlerTouchDragInside() {
-    sink(.TouchDragInside)
+    observer(.TouchDragInside)
   }
   
   func eventHandlerTouchDragOutside() {
-    sink(.TouchDragOutside)
+    observer(.TouchDragOutside)
   }
   
   func eventHandlerTouchDragEnter() {
-    sink(.TouchDragEnter)
+    observer(.TouchDragEnter)
   }
   
   func eventHandlerTouchDragExit() {
-    sink(.TouchDragExit)
+    observer(.TouchDragExit)
   }
   
   func eventHandlerTouchUpInside() {
-    sink(.TouchUpInside)
+    observer(.TouchUpInside)
   }
   
   func eventHandlerTouchUpOutside() {
-    sink(.TouchUpOutside)
+    observer(.TouchUpOutside)
   }
   
   func eventHandlerTouchCancel() {
-    sink(.TouchCancel)
+    observer(.TouchCancel)
   }
   
   func eventHandlerValueChanged() {
-    sink(.ValueChanged)
+    observer(.ValueChanged)
   }
   
   func eventHandlerEditingDidBegin() {
-    sink(.EditingDidBegin)
+    observer(.EditingDidBegin)
   }
   
   func eventHandlerEditingChanged() {
-    sink(.EditingChanged)
+    observer(.EditingChanged)
   }
   
   func eventHandlerEditingDidEnd() {
-    sink(.EditingDidEnd)
+    observer(.EditingDidEnd)
   }
   
   func eventHandlerEditingDidEndOnExit() {
-    sink(.EditingDidEndOnExit)
+    observer(.EditingDidEndOnExit)
   }
   
   deinit {
@@ -123,14 +123,14 @@ extension UIControl {
     if let rControlEvent: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.ControlEventKey) {
       return rControlEvent as! ActiveStream<UIControlEvents>
     } else {
-      var capturedSink: (UIControlEvents -> Void)! = nil
+      var capturedObserver: (UIControlEvents -> Void)! = nil
       
-      let rControlEvent = ActiveStream<UIControlEvents>(limit: 0) { sink in
-        capturedSink = sink
+      let rControlEvent = ActiveStream<UIControlEvents>(limit: 0) { observer in
+        capturedObserver = observer
         return nil
       }
       
-      let controlHelper = RKUIControlHelper(control: self, sink: capturedSink)
+      let controlHelper = RKUIControlHelper(control: self, observer: capturedObserver)
       
       objc_setAssociatedObject(self, &AssociatedKeys.ControlBondHelperKey, controlHelper, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       objc_setAssociatedObject(self, &AssociatedKeys.ControlEventKey, rControlEvent, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)

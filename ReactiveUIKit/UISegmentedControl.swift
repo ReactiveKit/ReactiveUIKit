@@ -63,8 +63,8 @@ extension UISegmentedControl {
 
 extension UISegmentedControl: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (Int -> ()) {
-    return self.rSelectedSegmentIndex.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (Int -> ()) {
+    return self.rSelectedSegmentIndex.observer(disconnectDisposable)
   }
 }
   

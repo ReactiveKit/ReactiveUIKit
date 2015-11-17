@@ -99,7 +99,7 @@ extension UITextView {
 
 extension UITextView: BindableType {
   
-  public func sink(disconnectDisposable: DisposableType?) -> (String? -> ()) {
-    return self.rText.sink(disconnectDisposable)
+  public func observer(disconnectDisposable: DisposableType?) -> (String? -> ()) {
+    return self.rText.observer(disconnectDisposable)
   }
 }
