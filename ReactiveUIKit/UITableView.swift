@@ -82,14 +82,14 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
     tableView.dataSource = self
     tableView.reloadData()
     
-    collection.observe(on: Queue.main.context) { [weak tableView] event in
-      if let tableView = tableView {
+    collection.observe(on: Queue.main.context) { [weak self] event in
+      if let uSelf = self {
         if animated {
-          tableView.beginUpdates()
-          RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, dataSource: proxyDataSource)
-          tableView.endUpdates()
+          uSelf.tableView.beginUpdates()
+          RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: uSelf.tableView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
+          uSelf.tableView.endUpdates()
         } else {
-          tableView.reloadData()
+          uSelf.tableView.reloadData()
         }
       }
     }.disposeIn(rBag)
