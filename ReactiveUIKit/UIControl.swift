@@ -125,7 +125,7 @@ extension UIControl {
     } else {
       var capturedObserver: (UIControlEvents -> Void)! = nil
       
-      let rControlEvent = ActiveStream<UIControlEvents>(limit: 0) { observer in
+      let rControlEvent = ActiveStream<UIControlEvents> { observer in
         capturedObserver = observer
         return nil
       }
