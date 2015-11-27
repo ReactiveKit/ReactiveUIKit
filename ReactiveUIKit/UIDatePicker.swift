@@ -43,7 +43,7 @@ extension UIDatePicker {
       
       var updatingFromSelf: Bool = false
       
-      rDate.observe { [weak self] (date: NSDate) in
+      rDate.observe(on: ImmediateOnMainExecutionContext) { [weak self] (date: NSDate) in
         if !updatingFromSelf {
           self?.date = date
         }
@@ -51,7 +51,7 @@ extension UIDatePicker {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateExecutionContext) { [weak self] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rDate.value = unwrappedSelf.date

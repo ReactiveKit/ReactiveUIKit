@@ -43,7 +43,7 @@ extension UITextView {
       
       var updatingFromSelf: Bool = false
       
-      rText.observe { [weak self] (text: String?) in
+      rText.observe(on: ImmediateOnMainExecutionContext) { [weak self] (text: String?) in
         if !updatingFromSelf {
           self?.text = text
         }
@@ -51,7 +51,7 @@ extension UITextView {
       
       NSNotificationCenter.defaultCenter()
         .rNotification(UITextViewTextDidChangeNotification, object: self)
-        .observe(on: ImmediateExecutionContext) { [weak rText] notification in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak rText] notification in
           if let textView = notification.object as? UITextView, rText = rText {
             updatingFromSelf = true
             rText.value = textView.text
@@ -72,7 +72,7 @@ extension UITextView {
       
       var updatingFromSelf: Bool = false
       
-      rAttributedText.observe { [weak self] (text: NSAttributedString?) in
+      rAttributedText.observe(on: ImmediateOnMainExecutionContext) { [weak self] (text: NSAttributedString?) in
         if !updatingFromSelf {
           self?.attributedText = text
         }
@@ -80,7 +80,7 @@ extension UITextView {
       
       NSNotificationCenter.defaultCenter()
         .rNotification(UITextViewTextDidChangeNotification, object: self)
-        .observe(on: ImmediateExecutionContext) { [weak rAttributedText] notification in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak rAttributedText] notification in
         if let textView = notification.object as? UITextView, rAttributedText = rAttributedText {
           updatingFromSelf = true
           rAttributedText.value = textView.attributedText

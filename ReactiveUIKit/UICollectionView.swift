@@ -71,7 +71,7 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
     collectionView.dataSource = self
     collectionView.reloadData()
     
-    collection.observe(on: Queue.main.context) { [weak self] event in
+    collection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
       if let uSelf = self {
         if animated {
           uSelf.collectionView.performBatchUpdates({

@@ -42,7 +42,7 @@ extension UISlider {
       
       var updatingFromSelf: Bool = false
       
-      rValue.observe { [weak self] value in
+      rValue.observe(on: ImmediateOnMainExecutionContext) { [weak self] value in
         if !updatingFromSelf {
           self?.value = value
         }
@@ -50,7 +50,7 @@ extension UISlider {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateExecutionContext) { [weak self] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rValue.value = unwrappedSelf.value

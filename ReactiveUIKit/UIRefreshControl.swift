@@ -43,7 +43,7 @@ extension UIRefreshControl {
       
       var updatingFromSelf: Bool = false
       
-      rRefreshing.observe { [weak self] (value: Bool) in
+      rRefreshing.observe(on: ImmediateOnMainExecutionContext) { [weak self] (value: Bool) in
         if !updatingFromSelf {
           if value {
             self?.beginRefreshing()
@@ -55,7 +55,7 @@ extension UIRefreshControl {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateExecutionContext) { [weak rRefreshing] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak rRefreshing] event in
           guard let rRefreshing = rRefreshing else { return }
           updatingFromSelf = true
           rRefreshing.value = true

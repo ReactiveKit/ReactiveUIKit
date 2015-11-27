@@ -41,7 +41,7 @@ extension UISegmentedControl {
       
       var updatingFromSelf: Bool = false
       
-      rSelectedSegmentIndex.observe { [weak self] selectedSegmentIndex in
+      rSelectedSegmentIndex.observe(on: ImmediateOnMainExecutionContext) { [weak self] selectedSegmentIndex in
         if !updatingFromSelf {
           self?.selectedSegmentIndex = selectedSegmentIndex
         }
@@ -49,7 +49,7 @@ extension UISegmentedControl {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateExecutionContext) { [weak self] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rSelectedSegmentIndex.value = unwrappedSelf.selectedSegmentIndex

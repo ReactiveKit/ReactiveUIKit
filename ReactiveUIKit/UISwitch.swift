@@ -42,7 +42,7 @@ extension UISwitch {
       
       var updatingFromSelf: Bool = false
       
-      rOn.observe { [weak self] on in
+      rOn.observe(on: ImmediateOnMainExecutionContext) { [weak self] on in
         if !updatingFromSelf {
           self?.on = on
         }
@@ -50,7 +50,7 @@ extension UISwitch {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateExecutionContext) { [weak self] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rOn.value = unwrappedSelf.on

@@ -43,7 +43,7 @@ extension UITextField {
       
       var updatingFromSelf: Bool = false
       
-      rText.observe { [weak self] (text: String?) in
+      rText.observe(on: ImmediateOnMainExecutionContext) { [weak self] (text: String?) in
         if !updatingFromSelf {
           self?.text = text
         }
@@ -51,7 +51,7 @@ extension UITextField {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.EditingChanged }
-        .observe(on: ImmediateExecutionContext) { [weak self] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rText.value = unwrappedSelf.text
@@ -71,7 +71,7 @@ extension UITextField {
       
       var updatingFromSelf: Bool = false
       
-      rAttributedText.observe { [weak self] (text: NSAttributedString?) in
+      rAttributedText.observe(on: ImmediateOnMainExecutionContext) { [weak self] (text: NSAttributedString?) in
         if !updatingFromSelf {
           self?.attributedText = text
         }
@@ -79,7 +79,7 @@ extension UITextField {
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.EditingChanged }
-        .observe(on: ImmediateExecutionContext) { [weak self] event in
+        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rAttributedText.value = unwrappedSelf.attributedText

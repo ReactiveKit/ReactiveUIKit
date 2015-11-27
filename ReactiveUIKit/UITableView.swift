@@ -82,7 +82,7 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
     tableView.dataSource = self
     tableView.reloadData()
     
-    collection.observe(on: Queue.main.context) { [weak self] event in
+    collection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
       if let uSelf = self {
         if animated {
           uSelf.tableView.beginUpdates()
