@@ -65,7 +65,8 @@ extension ObservableCollectionType where Collection.Index == Int {
 
 public class RKTableViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int>: NSObject, UITableViewDataSource {
   
-  private let collection: C
+  private let observableCollection: C
+  private var sourceCollection: C.Collection
   private weak var tableView: UITableView!
   private let createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell
   private weak var proxyDataSource: RKTableViewProxyDataSource?
@@ -75,15 +76,17 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
     self.tableView = tableView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
-    self.collection = collection
+    self.observableCollection = collection
+    self.sourceCollection = collection.collection
     self.animated = animated
     super.init()
-    
+
     tableView.dataSource = self
     tableView.reloadData()
     
-    collection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+    observableCollection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
       if let uSelf = self {
+        uSelf.sourceCollection = event.collection
         if animated {
           uSelf.tableView.beginUpdates()
           RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: uSelf.tableView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
@@ -120,11 +123,11 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
   }
   
   @objc public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return collection.collection.count
+    return sourceCollection.count
   }
   
   @objc public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    return createCell(indexPath, collection.collection, tableView)
+    return createCell(indexPath, sourceCollection, tableView)
   }
   
   @objc public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name             = "ReactiveUIKit"
-  s.version          = "1.0.6"
+  s.version          = "1.0.8"
   s.summary          = "Reactive extensions for UIKit framework."
   s.homepage         = "https://github.com/ReactiveKit/ReactiveUIKit"
   s.license          = 'MIT'
   s.author           = { "Srdan Rasic" => "srdan.rasic@gmail.com" }
-  s.source           = { :git => "https://github.com/ReactiveKit/ReactiveUIKit.git", :tag => "v1.0.6" }
+  s.source           = { :git => "https://github.com/ReactiveKit/ReactiveUIKit.git", :tag => "v1.0.8" }
 
   s.ios.deployment_target       = '8.0'
   s.tvos.deployment_target      = '9.0'

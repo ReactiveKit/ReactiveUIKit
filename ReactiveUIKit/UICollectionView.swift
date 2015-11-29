@@ -54,7 +54,8 @@ extension ObservableCollectionType where Collection.Index == Int {
 
 public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int>: NSObject, UICollectionViewDataSource {
   
-  private let collection: C
+  private let observableCollection: C
+  private var sourceCollection: C.Collection
   private weak var collectionView: UICollectionView!
   private let createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell
   private weak var proxyDataSource: RKCollectionViewProxyDataSource?
@@ -64,15 +65,17 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
     self.collectionView = collectionView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
-    self.collection = collection
+    self.observableCollection = collection
+    self.sourceCollection = collection.collection
     self.animated = animated
     super.init()
     
     collectionView.dataSource = self
     collectionView.reloadData()
     
-    collection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+    observableCollection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
       if let uSelf = self {
+        uSelf.sourceCollection = event.collection
         if animated {
           uSelf.collectionView.performBatchUpdates({
             RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: uSelf.collectionView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
@@ -109,11 +112,11 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
   }
   
   @objc public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return collection.collection.count
+    return sourceCollection.count
   }
   
   @objc public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    return createCell(indexPath, collection.collection, collectionView)
+    return createCell(indexPath, sourceCollection, collectionView)
   }
   
   @objc public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
