@@ -32,7 +32,7 @@ extension UITableView {
   }
 }
 
-extension ObservableCollectionType where Collection.Index == Int {
+extension ObservableCollectionType where Collection.Index == Int, Event == ObservableCollectionEvent<Collection> {
   public func bindTo(tableView: UITableView, animated: Bool = true, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell) -> DisposableType {
     
     let dataSource = RKTableViewDataSource(collection: self, tableView: tableView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
@@ -63,7 +63,7 @@ extension ObservableCollectionType where Collection.Index == Int {
   optional func tableView(tableView: UITableView, animationForRowInSections sections: Set<Int>) -> UITableViewRowAnimation
 }
 
-public class RKTableViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int>: NSObject, UITableViewDataSource {
+public class RKTableViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int, C.Event == ObservableCollectionEvent<C.Collection>>: NSObject, UITableViewDataSource {
   
   private let observableCollection: C
   private var sourceCollection: C.Collection
@@ -84,7 +84,7 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
     tableView.dataSource = self
     tableView.reloadData()
     
-    observableCollection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+    observableCollection.skip(1).observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
       if let uSelf = self {
         uSelf.sourceCollection = event.collection
         if animated {

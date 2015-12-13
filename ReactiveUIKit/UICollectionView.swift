@@ -32,7 +32,7 @@ extension UICollectionView {
   }
 }
 
-extension ObservableCollectionType where Collection.Index == Int {
+extension ObservableCollectionType where Collection.Index == Int, Event == ObservableCollectionEvent<Collection> {
   public func bindTo(collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell) -> DisposableType {
     
     let dataSource = RKCollectionViewDataSource(collection: self, collectionView: collectionView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
@@ -52,7 +52,7 @@ extension ObservableCollectionType where Collection.Index == Int {
   optional func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
 }
 
-public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int>: NSObject, UICollectionViewDataSource {
+public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int, C.Event == ObservableCollectionEvent<C.Collection>>: NSObject, UICollectionViewDataSource {
   
   private let observableCollection: C
   private var sourceCollection: C.Collection
@@ -72,8 +72,8 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
     
     collectionView.dataSource = self
     collectionView.reloadData()
-    
-    observableCollection.observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+
+    observableCollection.skip(1).observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
       if let uSelf = self {
         uSelf.sourceCollection = event.collection
         if animated {
