@@ -139,7 +139,7 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
   }
   
   @objc public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return proxyDataSource?.tableView?(tableView, canEditRowAtIndexPath: indexPath) ?? false
+    return proxyDataSource?.tableView?(tableView, canEditRowAtIndexPath: indexPath) ?? true
   }
   
   @objc public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
