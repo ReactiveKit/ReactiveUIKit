@@ -3,9 +3,37 @@
    LastUpgradeVersion = "0710"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      parallelizeBuildables = "NO"
+      buildImplicitDependencies = "NO">
       <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ECBCCDCF1BEB6B9A00723476"
+               BuildableName = "ReactiveKit.framework"
+               BlueprintName = "ReactiveKit-iOS"
+               ReferencedContainer = "container:ReactiveKit/ReactiveKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ECBCCE3D1BEB6E2B00723476"
+               BuildableName = "ReactiveFoundation.framework"
+               BlueprintName = "ReactiveFoundation-iOS"
+               ReferencedContainer = "container:ReactiveFoundation/ReactiveFoundation.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
