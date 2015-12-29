@@ -73,18 +73,16 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
     collectionView.dataSource = self
     collectionView.reloadData()
     
-    observableCollection.skip(1).observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+    observableCollection.skip(1).observe(on: MainExecutionContext) { [weak self] event in
       if let uSelf = self {
         uSelf.sourceCollection = event.collection
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-          if animated {
-            uSelf.collectionView.performBatchUpdates({
-              RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: uSelf.collectionView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
-              }, completion: nil)
-          } else {
-            uSelf.collectionView.reloadData()
-          }
-        })
+        if animated {
+          uSelf.collectionView.performBatchUpdates({
+            RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: uSelf.collectionView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
+            }, completion: nil)
+        } else {
+          uSelf.collectionView.reloadData()
+        }
       }
       }.disposeIn(rBag)
   }
