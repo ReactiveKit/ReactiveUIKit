@@ -73,7 +73,7 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
     collectionView.dataSource = self
     collectionView.reloadData()
 
-    observableCollection.skip(1).observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+    observableCollection.skip(1).observe(on: Queue.main.context) { [weak self] event in
       if let uSelf = self {
         uSelf.sourceCollection = event.collection
         if animated {
