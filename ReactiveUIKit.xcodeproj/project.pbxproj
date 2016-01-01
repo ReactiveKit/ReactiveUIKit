@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782B49D81C36D52100E5979D /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B49D71C36D52100E5979D /* UIBarButtonItem.swift */; };
 		EC9549321BF1D8A7000FC2BF /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */; };
 		EC9549341BF1DC52000FC2BF /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549331BF1DC52000FC2BF /* UIControl.swift */; };
 		EC9549361BF1DE78000FC2BF /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9549351BF1DE78000FC2BF /* UIButton.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		16E125A11BF5056C00543EFB /* ReactiveUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReactiveUIKit.podspec; sourceTree = "<group>"; };
 		16E125A21BF5056C00543EFB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		782B49D71C36D52100E5979D /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		EC9549311BF1D8A7000FC2BF /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		EC9549331BF1DC52000FC2BF /* UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		EC9549351BF1DE78000FC2BF /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */,
 				ECB7A5631BEB72380034053A /* UIView.swift */,
+				782B49D71C36D52100E5979D /* UIBarButtonItem.swift */,
 				ECB7A55C1BEB72380034053A /* UIBarItem.swift */,
 				ECB7A55D1BEB72380034053A /* UIImageView.swift */,
 				ECB7A55E1BEB72380034053A /* UILabel.swift */,
@@ -377,6 +380,7 @@
 				EC95493A1BF1E12E000FC2BF /* UISegmentedControl.swift in Sources */,
 				EC9549341BF1DC52000FC2BF /* UIControl.swift in Sources */,
 				EC95493E1BF1E286000FC2BF /* UISwitch.swift in Sources */,
+				782B49D81C36D52100E5979D /* UIBarButtonItem.swift in Sources */,
 				ECB7A56C1BEB72380034053A /* UIView.swift in Sources */,
 				ECB7A5651BEB72380034053A /* UIBarItem.swift in Sources */,
 				ECB7A5691BEB72380034053A /* UIProgressView.swift in Sources */,
