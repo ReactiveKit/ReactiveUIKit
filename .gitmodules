@@ -1,6 +1,0 @@
-[submodule "ReactiveKit"]
-	path = ReactiveKit
-	url = git@github.com:ReactiveKit/ReactiveKit.git
-[submodule "ReactiveFoundation"]
-	path = ReactiveFoundation
-	url = git@github.com:ReactiveKit/ReactiveFoundation.git
