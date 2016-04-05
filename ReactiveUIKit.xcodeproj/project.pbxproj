@@ -64,6 +64,7 @@
 /* Begin PBXFileReference section */
 		16E125A11BF5056C00543EFB /* ReactiveUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReactiveUIKit.podspec; sourceTree = "<group>"; };
 		16E125A21BF5056C00543EFB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		16F69F6A1CB462D400FD2B5F /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		EC83BAF41CB00A5B007D7E47 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarButtonItem.swift; path = Sources/UIBarButtonItem.swift; sourceTree = SOURCE_ROOT; };
 		EC8A9A1B1CABED4C0042A6AD /* ReactiveUIKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveUIKitTests.swift; path = Tests/ReactiveUIKitTests.swift; sourceTree = SOURCE_ROOT; };
 		EC8A9A1D1CABED670042A6AD /* UIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIActivityIndicatorView.swift; path = Sources/UIActivityIndicatorView.swift; sourceTree = SOURCE_ROOT; };
@@ -123,6 +124,7 @@
 			children = (
 				16E125A21BF5056C00543EFB /* README.md */,
 				16E125A11BF5056C00543EFB /* ReactiveUIKit.podspec */,
+				16F69F6A1CB462D400FD2B5F /* Package.swift */,
 				ECB7A5431BEB71E10034053A /* ReactiveUIKit */,
 				ECB7A54F1BEB71E10034053A /* ReactiveUIKitTests */,
 				ECB7A5421BEB71E10034053A /* Products */,
