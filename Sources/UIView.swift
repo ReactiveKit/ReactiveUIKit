@@ -22,13 +22,28 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UINavigationItem {
+extension UIView {
   
-  public var rTitle: Observable<String?> {
-    return rAssociatedObservableForValueForKey("title")
+  public var rAlpha: Property<CGFloat> {
+    return rAssociatedPropertyForValueForKey("alpha")
+  }
+  
+  public var rBackgroundColor: Property<UIColor?> {
+    return rAssociatedPropertyForValueForKey("backgroundColor")
+  }
+  
+  public var rHidden: Property<Bool> {
+    return rAssociatedPropertyForValueForKey("hidden")
+  }
+  
+  public var rUserInteractionEnabled: Property<Bool> {
+    return rAssociatedPropertyForValueForKey("userInteractionEnabled")
+  }
+  
+  public var rTintColor: Property<UIColor?> {
+    return rAssociatedPropertyForValueForKey("tintColor")
   }
 }

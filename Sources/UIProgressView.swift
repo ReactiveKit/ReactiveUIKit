@@ -22,27 +22,19 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UILabel {
+extension UIProgressView {
   
-  public var rText: Observable<String?> {
-    return rAssociatedObservableForValueForKey("text")
-  }
-  
-  public var rAttributedText: Observable<NSAttributedString?> {
-    return rAssociatedObservableForValueForKey("attributedText")
-  }
-  
-  public var rTextColor: Observable<UIColor?> {
-    return rAssociatedObservableForValueForKey("textColor")
+  public var rProgress: Property<Float> {
+    return rAssociatedPropertyForValueForKey("progress")
   }
 }
 
-extension UILabel: BindableType {
-  public func observer(disconnectDisposable: DisposableType?) -> (String? -> ()) {
-    return self.rText.observer(disconnectDisposable)
+extension UIProgressView: BindableType {
+  
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<Float> -> ()) {
+    return self.rProgress.observer(disconnectDisposable)
   }
 }

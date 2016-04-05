@@ -22,7 +22,6 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
@@ -32,10 +31,10 @@ extension UICollectionView {
   }
 }
 
-extension ObservableCollectionType where Collection.Index == Int, Event == ObservableCollectionEvent<Collection> {
-  public func bindTo(collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell) -> DisposableType {
-    
-    let dataSource = RKCollectionViewDataSource(collection: self, collectionView: collectionView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
+extension StreamType where Event.Element: CollectionChangesetType, Event.Element.Collection.Index == Int {
+  public func bindTo(collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource? = nil, createCell: (NSIndexPath, Event.Element.Collection, UICollectionView) -> UICollectionViewCell) -> Disposable {
+
+    let dataSource = RKCollectionViewDataSource(stream: self, collectionView: collectionView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
     objc_setAssociatedObject(collectionView, &UICollectionView.AssociatedKeys.DataSourceKey, dataSource, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     
     return BlockDisposable { [weak collectionView] in
@@ -52,42 +51,44 @@ extension ObservableCollectionType where Collection.Index == Int, Event == Obser
   optional func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
 }
 
-public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int, C.Event == ObservableCollectionEvent<C.Collection>>: NSObject, UICollectionViewDataSource {
+public class RKCollectionViewDataSource<S: StreamType where S.Event.Element: CollectionChangesetType, S.Event.Element.Collection.Index == Int>: NSObject, UICollectionViewDataSource {
+
+  private typealias Collection = S.Event.Element.Collection
   
-  private let observableCollection: C
-  private var sourceCollection: C.Collection
+  private let stream: S
+  private var sourceCollection: Collection? = nil
   private weak var collectionView: UICollectionView!
-  private let createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell
+  private let createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell
   private weak var proxyDataSource: RKCollectionViewProxyDataSource?
   private let animated: Bool
   
-  public init(collection: C, collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UICollectionView) -> UICollectionViewCell) {
+  public init(stream: S, collectionView: UICollectionView, animated: Bool = true, proxyDataSource: RKCollectionViewProxyDataSource?, createCell: (NSIndexPath, Collection, UICollectionView) -> UICollectionViewCell) {
     self.collectionView = collectionView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
-    self.observableCollection = collection
-    self.sourceCollection = collection.collection
+    self.stream = stream
     self.animated = animated
     super.init()
     
     collectionView.dataSource = self
     collectionView.reloadData()
 
-    observableCollection.skip(1).observe(on: Queue.main.context) { [weak self] event in
+    stream.observeNext { [weak self] event in
       if let uSelf = self {
+        let justReload = uSelf.sourceCollection == nil
         uSelf.sourceCollection = event.collection
-        if animated {
+        if justReload || !animated {
+          uSelf.collectionView.reloadData()
+        } else {
           uSelf.collectionView.performBatchUpdates({
             RKCollectionViewDataSource.applyRowUnitChangeSet(event, collectionView: uSelf.collectionView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
             }, completion: nil)
-        } else {
-          uSelf.collectionView.reloadData()
         }
       }
     }.disposeIn(rBag)
   }
   
-  private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<C.Collection>, collectionView: UICollectionView, sectionIndex: Int, dataSource: RKCollectionViewProxyDataSource?) {
+  private class func applyRowUnitChangeSet(changeSet: S.Event.Element, collectionView: UICollectionView, sectionIndex: Int, dataSource: RKCollectionViewProxyDataSource?) {
     
     if changeSet.inserts.count > 0 {
       let indexPaths = changeSet.inserts.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
@@ -112,11 +113,11 @@ public class RKCollectionViewDataSource<C: ObservableCollectionType where C.Coll
   }
   
   @objc public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return sourceCollection.count
+    return sourceCollection?.count ?? 0
   }
   
   @objc public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    return createCell(indexPath, sourceCollection, collectionView)
+    return createCell(indexPath, sourceCollection!, collectionView)
   }
   
   @objc public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {

@@ -23,7 +23,6 @@
 //
 
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
@@ -34,70 +33,70 @@ extension UITextField {
     static var AttributedTextKey = "r_AttributedTextKey"
   }
   
-  public var rText: Observable<String?> {
+  public var rText: Property<String?> {
     if let rText: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.TextKey) {
-      return rText as! Observable<String?>
+      return rText as! Property<String?>
     } else {
-      let rText = Observable<String?>(self.text)
+      let rText = Property<String?>(self.text)
       objc_setAssociatedObject(self, &AssociatedKeys.TextKey, rText, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       
       var updatingFromSelf: Bool = false
       
-      rText.observe(on: ImmediateOnMainExecutionContext) { [weak self] (text: String?) in
+      rText.observeNext { [weak self] (text: String?) in
         if !updatingFromSelf {
           self?.text = text
         }
-      }
+      }.disposeIn(rBag)
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.EditingChanged }
-        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+        .observeNext { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rText.value = unwrappedSelf.text
           updatingFromSelf = false
-        }
+        }.disposeIn(rBag)
       
       return rText
     }
   }
   
-  public var rAttributedText: Observable<NSAttributedString?> {
+  public var rAttributedText: Property<NSAttributedString?> {
     if let rAttributedText: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.AttributedTextKey) {
-      return rAttributedText as! Observable<NSAttributedString?>
+      return rAttributedText as! Property<NSAttributedString?>
     } else {
-      let rAttributedText = Observable<NSAttributedString?>(self.attributedText)
+      let rAttributedText = Property<NSAttributedString?>(self.attributedText)
       objc_setAssociatedObject(self, &AssociatedKeys.AttributedTextKey, rAttributedText, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       
       var updatingFromSelf: Bool = false
       
-      rAttributedText.observe(on: ImmediateOnMainExecutionContext) { [weak self] (text: NSAttributedString?) in
+      rAttributedText.observeNext { [weak self] (text: NSAttributedString?) in
         if !updatingFromSelf {
           self?.attributedText = text
         }
-      }
+      }.disposeIn(rBag)
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.EditingChanged }
-        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+        .observeNext { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
           unwrappedSelf.rAttributedText.value = unwrappedSelf.attributedText
           updatingFromSelf = false
-        }
+        }.disposeIn(rBag)
       
       return rAttributedText
     }
   }
   
-  public var rTextColor: Observable<UIColor?> {
-    return rAssociatedObservableForValueForKey("textColor")
+  public var rTextColor: Property<UIColor?> {
+    return rAssociatedPropertyForValueForKey("textColor")
   }
 }
 
 extension UITextField: BindableType {
   
-  public func observer(disconnectDisposable: DisposableType?) -> (String? -> ()) {
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<String?> -> ()) {
     return self.rText.observer(disconnectDisposable)
   }
 }

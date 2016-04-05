@@ -22,7 +22,6 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
@@ -32,12 +31,12 @@ extension UITableView {
   }
 }
 
-extension ObservableCollectionType where Collection.Index == Int, Event == ObservableCollectionEvent<Collection> {
-  public func bindTo(tableView: UITableView, animated: Bool = true, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell) -> DisposableType {
-    
-    let dataSource = RKTableViewDataSource(collection: self, tableView: tableView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
+extension StreamType where Event.Element: CollectionChangesetType, Event.Element.Collection.Index == Int {
+  public func bindTo(tableView: UITableView, animated: Bool = true, proxyDataSource: RKTableViewProxyDataSource? = nil, createCell: (NSIndexPath, Event.Element.Collection, UITableView) -> UITableViewCell) -> Disposable {
+
+    let dataSource = RKTableViewDataSource(stream: self, tableView: tableView, animated: animated, proxyDataSource: proxyDataSource, createCell: createCell)
     objc_setAssociatedObject(tableView, &UITableView.AssociatedKeys.DataSourceKey, dataSource, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    
+
     return BlockDisposable { [weak tableView] in
       if let tableView = tableView {
         objc_setAssociatedObject(tableView, &UITableView.AssociatedKeys.DataSourceKey, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -63,42 +62,44 @@ extension ObservableCollectionType where Collection.Index == Int, Event == Obser
   optional func tableView(tableView: UITableView, animationForRowInSections sections: Set<Int>) -> UITableViewRowAnimation
 }
 
-public class RKTableViewDataSource<C: ObservableCollectionType where C.Collection.Index == Int, C.Event == ObservableCollectionEvent<C.Collection>>: NSObject, UITableViewDataSource {
+public class RKTableViewDataSource<S: StreamType where S.Event.Element: CollectionChangesetType, S.Event.Element.Collection.Index == Int>: NSObject, UITableViewDataSource {
   
-  private let observableCollection: C
-  private var sourceCollection: C.Collection
+  private typealias Collection = S.Event.Element.Collection
+
+  private let stream: S
+  private var sourceCollection: Collection? = nil
   private weak var tableView: UITableView!
-  private let createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell
+  private let createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell
   private weak var proxyDataSource: RKTableViewProxyDataSource?
   private let animated: Bool
   
-  public init(collection: C, tableView: UITableView, animated: Bool, proxyDataSource: RKTableViewProxyDataSource?, createCell: (NSIndexPath, C.Collection, UITableView) -> UITableViewCell) {
+  public init(stream: S, tableView: UITableView, animated: Bool, proxyDataSource: RKTableViewProxyDataSource?, createCell: (NSIndexPath, Collection, UITableView) -> UITableViewCell) {
     self.tableView = tableView
     self.createCell = createCell
     self.proxyDataSource = proxyDataSource
-    self.observableCollection = collection
-    self.sourceCollection = collection.collection
+    self.stream = stream
     self.animated = animated
     super.init()
 
     tableView.dataSource = self
     tableView.reloadData()
-    
-    observableCollection.skip(1).observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+
+    stream.observeNext { [weak self] event in
       if let uSelf = self {
+        let justReload = uSelf.sourceCollection == nil
         uSelf.sourceCollection = event.collection
-        if animated {
+        if justReload || !animated {
+          uSelf.tableView.reloadData()
+        } else {
           uSelf.tableView.beginUpdates()
           RKTableViewDataSource.applyRowUnitChangeSet(event, tableView: uSelf.tableView, sectionIndex: 0, dataSource: uSelf.proxyDataSource)
           uSelf.tableView.endUpdates()
-        } else {
-          uSelf.tableView.reloadData()
         }
       }
     }.disposeIn(rBag)
   }
   
-  private class func applyRowUnitChangeSet(changeSet: ObservableCollectionEvent<C.Collection>, tableView: UITableView, sectionIndex: Int, dataSource: RKTableViewProxyDataSource?) {
+  private class func applyRowUnitChangeSet(changeSet: S.Event.Element, tableView: UITableView, sectionIndex: Int, dataSource: RKTableViewProxyDataSource?) {
     
     if changeSet.inserts.count > 0 {
       let indexPaths = changeSet.inserts.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
@@ -123,11 +124,11 @@ public class RKTableViewDataSource<C: ObservableCollectionType where C.Collectio
   }
   
   @objc public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sourceCollection.count
+    return sourceCollection?.count ?? 0
   }
   
   @objc public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    return createCell(indexPath, sourceCollection, tableView)
+    return createCell(indexPath, sourceCollection!, tableView)
   }
   
   @objc public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -22,29 +22,19 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UIView {
+extension UIImageView {
   
-  public var rAlpha: Observable<CGFloat> {
-    return rAssociatedObservableForValueForKey("alpha")
+  public var rImage: Property<UIImage?> {
+    return rAssociatedPropertyForValueForKey("image")
   }
+}
+
+extension UIImageView: BindableType {
   
-  public var rBackgroundColor: Observable<UIColor?> {
-    return rAssociatedObservableForValueForKey("backgroundColor")
-  }
-  
-  public var rHidden: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("hidden")
-  }
-  
-  public var rUserInteractionEnabled: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("userInteractionEnabled")
-  }
-  
-  public var rTintColor: Observable<UIColor?> {
-    return rAssociatedObservableForValueForKey("tintColor")
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<UIImage?> -> ()) {
+    return self.rImage.observer(disconnectDisposable)
   }
 }

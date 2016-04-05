@@ -22,20 +22,26 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UIImageView {
+extension UILabel {
   
-  public var rImage: Observable<UIImage?> {
-    return rAssociatedObservableForValueForKey("image")
+  public var rText: Property<String?> {
+    return rAssociatedPropertyForValueForKey("text")
+  }
+  
+  public var rAttributedText: Property<NSAttributedString?> {
+    return rAssociatedPropertyForValueForKey("attributedText")
+  }
+  
+  public var rTextColor: Property<UIColor?> {
+    return rAssociatedPropertyForValueForKey("textColor")
   }
 }
 
-extension UIImageView: BindableType {
-  
-  public func observer(disconnectDisposable: DisposableType?) -> (UIImage? -> ()) {
-    return self.rImage.observer(disconnectDisposable)
+extension UILabel: BindableType {
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<String?> -> ()) {
+    return self.rText.observer(disconnectDisposable)
   }
 }

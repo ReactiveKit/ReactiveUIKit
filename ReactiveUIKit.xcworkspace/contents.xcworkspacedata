@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../ReactiveKit/ReactiveKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ReactiveUIKit.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ReactiveKit/ReactiveKit.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ReactiveFoundation/ReactiveFoundation.xcodeproj">
    </FileRef>
 </Workspace>

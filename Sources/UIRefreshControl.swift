@@ -22,20 +22,48 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
+#if os(iOS)
+  
 import ReactiveKit
 import UIKit
 
-extension UIProgressView {
+extension UIRefreshControl {
   
-  public var rProgress: Observable<Float> {
-    return rAssociatedObservableForValueForKey("progress")
+  private struct AssociatedKeys {
+    static var RefreshingKey = "r_RefreshingKey"
+  }
+  
+  public var rRefreshing: Property<Bool> {
+    if let rRefreshing: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.RefreshingKey) {
+      return rRefreshing as! Property<Bool>
+    } else {
+      let rRefreshing = Property<Bool>(self.refreshing)
+      objc_setAssociatedObject(self, &AssociatedKeys.RefreshingKey, rRefreshing, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      
+      var updatingFromSelf: Bool = false
+      
+      rRefreshing.observeNext { [weak self] (value: Bool) in
+        if !updatingFromSelf {
+          if value {
+            self?.beginRefreshing()
+          } else {
+            self?.endRefreshing()
+          }
+        }
+      }.disposeIn(rBag)
+      
+      self.rControlEvent
+        .filter { $0 == UIControlEvents.ValueChanged }
+        .observeNext { [weak rRefreshing] event in
+          guard let rRefreshing = rRefreshing else { return }
+          updatingFromSelf = true
+          rRefreshing.value = true
+          updatingFromSelf = false
+      }.disposeIn(rBag)
+      
+      return rRefreshing
+    }
   }
 }
 
-extension UIProgressView: BindableType {
-  
-  public func observer(disconnectDisposable: DisposableType?) -> (Float -> ()) {
-    return self.rProgress.observer(disconnectDisposable)
-  }
-}
+#endif

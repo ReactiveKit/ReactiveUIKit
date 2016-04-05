@@ -24,51 +24,50 @@
 
 #if os(iOS)
   
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
-  
-extension UIDatePicker {
+
+extension UISwitch {
   
   private struct AssociatedKeys {
-    static var DateKey = "r_DateKey"
+    static var OnKey = "r_OnKey"
   }
   
-  public var rDate: Observable<NSDate> {
-    if let rDate: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.DateKey) {
-      return rDate as! Observable<NSDate>
+  public var rOn: Property<Bool> {
+    if let rOn: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.OnKey) {
+      return rOn as! Property<Bool>
     } else {
-      let rDate = Observable<NSDate>(self.date)
-      objc_setAssociatedObject(self, &AssociatedKeys.DateKey, rDate, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      let rOn = Property<Bool>(self.on)
+      objc_setAssociatedObject(self, &AssociatedKeys.OnKey, rOn, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       
       var updatingFromSelf: Bool = false
       
-      rDate.observe(on: ImmediateOnMainExecutionContext) { [weak self] (date: NSDate) in
-        if !updatingFromSelf {
-          self?.date = date
-        }
-      }
-      
+      rOn
+        .observeNext { [weak self] on in
+          if !updatingFromSelf {
+            self?.on = on
+          }
+        }.disposeIn(rBag)
+
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+        .observeNext { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
-          unwrappedSelf.rDate.value = unwrappedSelf.date
+          unwrappedSelf.rOn.value = unwrappedSelf.on
           updatingFromSelf = false
-        }
-      
-      return rDate
+        }.disposeIn(rBag)
+
+      return rOn
     }
   }
 }
   
-extension UIDatePicker: BindableType {
+extension UISwitch: BindableType {
   
-  public func observer(disconnectDisposable: DisposableType?) -> (NSDate -> ()) {
-    return self.rDate.observer(disconnectDisposable)
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<Bool> -> ()) {
+    return self.rOn.observer(disconnectDisposable)
   }
 }
-
 
 #endif

@@ -24,47 +24,50 @@
 
 #if os(iOS)
   
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
-
-extension UIRefreshControl {
+  
+extension UIDatePicker {
   
   private struct AssociatedKeys {
-    static var RefreshingKey = "r_RefreshingKey"
+    static var DateKey = "r_DateKey"
   }
   
-  public var rRefreshing: Observable<Bool> {
-    if let rRefreshing: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.RefreshingKey) {
-      return rRefreshing as! Observable<Bool>
+  public var rDate: Property<NSDate> {
+    if let rDate: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.DateKey) {
+      return rDate as! Property<NSDate>
     } else {
-      let rRefreshing = Observable<Bool>(self.refreshing)
-      objc_setAssociatedObject(self, &AssociatedKeys.RefreshingKey, rRefreshing, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      let rDate = Property<NSDate>(self.date)
+      objc_setAssociatedObject(self, &AssociatedKeys.DateKey, rDate, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       
       var updatingFromSelf: Bool = false
       
-      rRefreshing.observe(on: ImmediateOnMainExecutionContext) { [weak self] (value: Bool) in
+      rDate.observeNext { [weak self] (date: NSDate) in
         if !updatingFromSelf {
-          if value {
-            self?.beginRefreshing()
-          } else {
-            self?.endRefreshing()
-          }
+          self?.date = date
         }
-      }
+      }.disposeIn(rBag)
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateOnMainExecutionContext) { [weak rRefreshing] event in
-          guard let rRefreshing = rRefreshing else { return }
+        .observeNext { [weak self] event in
+          guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
-          rRefreshing.value = true
+          unwrappedSelf.rDate.value = unwrappedSelf.date
           updatingFromSelf = false
-      }
+        }.disposeIn(rBag)
       
-      return rRefreshing
+      return rDate
     }
   }
 }
+  
+extension UIDatePicker: BindableType {
+  
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<NSDate> -> ()) {
+    return self.rDate.observer(disconnectDisposable)
+  }
+}
+
 
 #endif

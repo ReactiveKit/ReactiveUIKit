@@ -22,51 +22,49 @@
 //  THE SOFTWARE.
 //
 
-#if os(iOS)
 
 import ReactiveKit
 import UIKit
 
-extension UISlider {
+extension UISegmentedControl {
   
   private struct AssociatedKeys {
-    static var ValueKey = "r_ValueKey"
+    static var SelectedSegmentIndexKey = "r_SelectedSegmentIndexKey"
   }
   
-  public var rValue: Observable<Float> {
-    if let rValue: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.ValueKey) {
-      return rValue as! Observable<Float>
+  public var rSelectedSegmentIndex: Property<Int> {
+    if let rSelectedSegmentIndex: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.SelectedSegmentIndexKey) {
+      return rSelectedSegmentIndex as! Property<Int>
     } else {
-      let rValue = Observable<Float>(self.value)
-      objc_setAssociatedObject(self, &AssociatedKeys.ValueKey, rValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      let rSelectedSegmentIndex = Property<Int>(self.selectedSegmentIndex)
+      objc_setAssociatedObject(self, &AssociatedKeys.SelectedSegmentIndexKey, rSelectedSegmentIndex, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
       
       var updatingFromSelf: Bool = false
       
-      rValue.observe(on: ImmediateOnMainExecutionContext) { [weak self] value in
+      rSelectedSegmentIndex.observeNext { [weak self] selectedSegmentIndex in
         if !updatingFromSelf {
-          self?.value = value
+          self?.selectedSegmentIndex = selectedSegmentIndex
         }
-      }
+      }.disposeIn(rBag)
       
       self.rControlEvent
         .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
+        .observeNext { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
-          unwrappedSelf.rValue.value = unwrappedSelf.value
+          unwrappedSelf.rSelectedSegmentIndex.value = unwrappedSelf.selectedSegmentIndex
           updatingFromSelf = false
-        }
+        }.disposeIn(rBag)
       
-      return rValue
+      return rSelectedSegmentIndex
     }
   }
 }
+
+extension UISegmentedControl: BindableType {
   
-extension UISlider: BindableType {
-    
-  public func observer(disconnectDisposable: DisposableType?) -> (Float -> ()) {
-    return self.rValue.observer(disconnectDisposable)
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<Int> -> ()) {
+    return self.rSelectedSegmentIndex.observer(disconnectDisposable)
   }
 }
-
-#endif
+  

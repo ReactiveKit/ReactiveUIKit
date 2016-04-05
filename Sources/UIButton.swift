@@ -22,21 +22,26 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UIBarItem {
+extension UIButton {
   
-  public var rTitle: Observable<String?> {
-    return rAssociatedObservableForValueForKey("title")
+  public var rTitle: Property<String?> {
+    return rAssociatedPropertyForValueForKey("title", initial: self.titleLabel?.text) { [weak self] title in
+      self?.setTitle(title, forState: UIControlState.Normal)
+    }
   }
   
-  public var rImage: Observable<UIImage?> {
-    return rAssociatedObservableForValueForKey("image")
+  public var rTap: Stream<Void> {
+    return self.rControlEvent.filter { $0 == UIControlEvents.TouchUpInside }.map { e in }
   }
   
-  public var rEnabled: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("enabled")
+  public var rSelected: Property<Bool> {
+    return rAssociatedPropertyForValueForKey("selected")
+  }
+  
+  public var rHighlighted: Property<Bool> {
+    return rAssociatedPropertyForValueForKey("highlighted")
   }
 }

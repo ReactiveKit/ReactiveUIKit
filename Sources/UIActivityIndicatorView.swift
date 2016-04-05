@@ -22,51 +22,25 @@
 //  THE SOFTWARE.
 //
 
-#if os(iOS)
-  
 import ReactiveKit
 import UIKit
 
-extension UISwitch {
+extension UIActivityIndicatorView {
   
-  private struct AssociatedKeys {
-    static var OnKey = "r_OnKey"
-  }
-  
-  public var rOn: Observable<Bool> {
-    if let rOn: AnyObject = objc_getAssociatedObject(self, &AssociatedKeys.OnKey) {
-      return rOn as! Observable<Bool>
-    } else {
-      let rOn = Observable<Bool>(self.on)
-      objc_setAssociatedObject(self, &AssociatedKeys.OnKey, rOn, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-      
-      var updatingFromSelf: Bool = false
-      
-      rOn.observe(on: ImmediateOnMainExecutionContext) { [weak self] on in
-        if !updatingFromSelf {
-          self?.on = on
-        }
+  public var rAnimating: Property<Bool> {
+    return rAssociatedPropertyForValueForKey("isAnimating", initial: self.isAnimating()) { [weak self] animating in
+      if animating {
+        self?.startAnimating()
+      } else {
+        self?.stopAnimating()
       }
-      
-      self.rControlEvent
-        .filter { $0 == UIControlEvents.ValueChanged }
-        .observe(on: ImmediateOnMainExecutionContext) { [weak self] event in
-          guard let unwrappedSelf = self else { return }
-          updatingFromSelf = true
-          unwrappedSelf.rOn.value = unwrappedSelf.on
-          updatingFromSelf = false
-        }
-      
-      return rOn
     }
   }
 }
+
+extension UIActivityIndicatorView: BindableType {
   
-extension UISwitch: BindableType {
-  
-  public func observer(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rOn.observer(disconnectDisposable)
+  public func observer(disconnectDisposable: Disposable) -> (StreamEvent<Bool> -> ()) {
+    return self.rAnimating.observer(disconnectDisposable)
   }
 }
-
-#endif

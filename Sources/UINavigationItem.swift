@@ -22,26 +22,12 @@
 //  THE SOFTWARE.
 //
 
-import ReactiveFoundation
 import ReactiveKit
 import UIKit
 
-extension UIActivityIndicatorView {
+extension UINavigationItem {
   
-  public var rAnimating: Observable<Bool> {
-    return rAssociatedObservableForValueForKey("isAnimating", initial: self.isAnimating()) { [weak self] animating in
-      if animating {
-        self?.startAnimating()
-      } else {
-        self?.stopAnimating()
-      }
-    }
-  }
-}
-
-extension UIActivityIndicatorView: BindableType {
-  
-  public func observer(disconnectDisposable: DisposableType?) -> (Bool -> ()) {
-    return self.rAnimating.observer(disconnectDisposable)
+  public var rTitle: Property<String?> {
+    return rAssociatedPropertyForValueForKey("title")
   }
 }
