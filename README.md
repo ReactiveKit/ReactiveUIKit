@@ -149,8 +149,8 @@ extension PropertyCollectionType {
 ### CocoaPods
 
 ```
-pod 'ReactiveKit', '~> 2.0-beta2'
-pod 'ReactiveUIKit', '~> 2.0-beta2'
+pod 'ReactiveKit', '~> 2.0-beta'
+pod 'ReactiveUIKit', '~> 2.0-beta'
 ```
 
 ### Carthage
