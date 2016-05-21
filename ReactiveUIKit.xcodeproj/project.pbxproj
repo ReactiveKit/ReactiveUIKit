@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165F031D1CEFA7A900FCE1C9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F031C1CEFA7A900FCE1C9 /* Protocols.swift */; };
+		165F031E1CEFA7A900FCE1C9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F031C1CEFA7A900FCE1C9 /* Protocols.swift */; };
+		165F03201CEFA7D600FCE1C9 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F031F1CEFA7D600FCE1C9 /* UIApplication.swift */; };
+		165F03211CEFA7D600FCE1C9 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F031F1CEFA7D600FCE1C9 /* UIApplication.swift */; };
 		EC5C668F1CB3D64B00C5F3C3 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A9A2B1CABED670042A6AD /* UITableView.swift */; };
 		EC5C66901CB3D64C00C5F3C3 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A9A2B1CABED670042A6AD /* UITableView.swift */; };
 		EC83BAF51CB00A5B007D7E47 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC83BAF41CB00A5B007D7E47 /* UIBarButtonItem.swift */; };
@@ -62,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		165F031C1CEFA7A900FCE1C9 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Sources/Protocols.swift; sourceTree = SOURCE_ROOT; };
+		165F031F1CEFA7D600FCE1C9 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplication.swift; path = Sources/UIApplication.swift; sourceTree = SOURCE_ROOT; };
 		16E125A11BF5056C00543EFB /* ReactiveUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReactiveUIKit.podspec; sourceTree = "<group>"; };
 		16E125A21BF5056C00543EFB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		16F69F6A1CB462D400FD2B5F /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -146,11 +152,11 @@
 			children = (
 				ECB7A5441BEB71E10034053A /* ReactiveUIKit.h */,
 				ECB7A5461BEB71E10034053A /* Info.plist */,
+				165F031F1CEFA7D600FCE1C9 /* UIApplication.swift */,
 				EC8A9A1D1CABED670042A6AD /* UIActivityIndicatorView.swift */,
 				EC8A9A1E1CABED670042A6AD /* UIBarItem.swift */,
 				EC83BAF41CB00A5B007D7E47 /* UIBarButtonItem.swift */,
 				EC8A9A1F1CABED670042A6AD /* UIButton.swift */,
-				EC8A9A201CABED670042A6AD /* UICollectionView.swift */,
 				EC8A9A211CABED670042A6AD /* UIControl.swift */,
 				EC8A9A221CABED670042A6AD /* UIDatePicker.swift */,
 				EC8A9A231CABED670042A6AD /* UIImageView.swift */,
@@ -162,9 +168,11 @@
 				EC8A9A291CABED670042A6AD /* UISlider.swift */,
 				EC8A9A2A1CABED670042A6AD /* UISwitch.swift */,
 				EC8A9A2B1CABED670042A6AD /* UITableView.swift */,
+				EC8A9A201CABED670042A6AD /* UICollectionView.swift */,
 				EC8A9A2C1CABED670042A6AD /* UITextField.swift */,
 				EC8A9A2D1CABED670042A6AD /* UITextView.swift */,
 				EC8A9A2E1CABED670042A6AD /* UIView.swift */,
+				165F031C1CEFA7A900FCE1C9 /* Protocols.swift */,
 			);
 			path = ReactiveUIKit;
 			sourceTree = "<group>";
@@ -332,12 +340,14 @@
 				EC8A9A3C1CABED670042A6AD /* UIImageView.swift in Sources */,
 				EC8A9A401CABED670042A6AD /* UINavigationItem.swift in Sources */,
 				EC8A9A301CABED670042A6AD /* UIActivityIndicatorView.swift in Sources */,
+				165F031E1CEFA7A900FCE1C9 /* Protocols.swift in Sources */,
 				EC8A9A441CABED670042A6AD /* UIRefreshControl.swift in Sources */,
 				EC8A9A3A1CABED670042A6AD /* UIDatePicker.swift in Sources */,
 				EC5C66901CB3D64C00C5F3C3 /* UITableView.swift in Sources */,
 				EC83BAF61CB00A5B007D7E47 /* UIBarButtonItem.swift in Sources */,
 				EC8A9A421CABED670042A6AD /* UIProgressView.swift in Sources */,
 				EC8A9A3E1CABED670042A6AD /* UILabel.swift in Sources */,
+				165F03211CEFA7D600FCE1C9 /* UIApplication.swift in Sources */,
 				EC8A9A341CABED670042A6AD /* UIButton.swift in Sources */,
 				EC8A9A481CABED670042A6AD /* UISlider.swift in Sources */,
 				EC8A9A521CABED670042A6AD /* UIView.swift in Sources */,
@@ -358,12 +368,14 @@
 				EC8A9A3B1CABED670042A6AD /* UIImageView.swift in Sources */,
 				EC8A9A3F1CABED670042A6AD /* UINavigationItem.swift in Sources */,
 				EC8A9A2F1CABED670042A6AD /* UIActivityIndicatorView.swift in Sources */,
+				165F031D1CEFA7A900FCE1C9 /* Protocols.swift in Sources */,
 				EC8A9A431CABED670042A6AD /* UIRefreshControl.swift in Sources */,
 				EC8A9A391CABED670042A6AD /* UIDatePicker.swift in Sources */,
 				EC5C668F1CB3D64B00C5F3C3 /* UITableView.swift in Sources */,
 				EC83BAF51CB00A5B007D7E47 /* UIBarButtonItem.swift in Sources */,
 				EC8A9A411CABED670042A6AD /* UIProgressView.swift in Sources */,
 				EC8A9A3D1CABED670042A6AD /* UILabel.swift in Sources */,
+				165F03201CEFA7D600FCE1C9 /* UIApplication.swift in Sources */,
 				EC8A9A331CABED670042A6AD /* UIButton.swift in Sources */,
 				EC8A9A471CABED670042A6AD /* UISlider.swift in Sources */,
 				EC8A9A511CABED670042A6AD /* UIView.swift in Sources */,
