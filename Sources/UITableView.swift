@@ -25,20 +25,45 @@
 import ReactiveKit
 import UIKit
 
-private func applyRowUnitChangeSet<C: CollectionChangesetType where C.Collection.Index == Int>(changeSet: C, tableView: UITableView, sectionIndex: Int) {
+
+public enum TableAnimation {
+  public enum ChangeType {
+    case Insert
+    case Delete
+    case Update
+  }
+
+  // Specifies the desired animation types for a change in a list of index
+  // paths.
+  public typealias IndexPathAnimationProvider = (ChangeType, [NSIndexPath]) -> [UITableViewRowAnimation: [NSIndexPath]]
+
+  // Implements IndexPathAnimationProvider, always returning
+  // UITableViewRowAnimation.Automatic for all index paths.
+  public static func alwaysAutomatic(_: ChangeType, ips: [NSIndexPath]) -> [UITableViewRowAnimation: [NSIndexPath]] {
+    return [.Automatic: ips]
+  }
+}
+
+private func applyRowUnitChangeSet<C: CollectionChangesetType where C.Collection.Index == Int>(changeSet: C, tableView: UITableView, sectionIndex: Int, animationProvider: TableAnimation.IndexPathAnimationProvider) {
   if changeSet.inserts.count > 0 {
     let indexPaths = changeSet.inserts.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
-    tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+    for (animation, ips) in animationProvider(.Insert, indexPaths) {
+      tableView.insertRowsAtIndexPaths(ips, withRowAnimation: animation)
+    }
   }
 
   if changeSet.updates.count > 0 {
     let indexPaths = changeSet.updates.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
-    tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+    for (animation, ips) in animationProvider(.Update, indexPaths) {
+      tableView.reloadRowsAtIndexPaths(ips, withRowAnimation: animation)
+    }
   }
 
   if changeSet.deletes.count > 0 {
     let indexPaths = changeSet.deletes.map { NSIndexPath(forItem: $0, inSection: sectionIndex) }
-    tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+    for (animation, ips) in animationProvider(.Delete, indexPaths) {
+      tableView.deleteRowsAtIndexPaths(ips, withRowAnimation: animation)
+    }
   }
 }
 
@@ -47,11 +72,15 @@ extension StreamType where Element: ArrayConvertible {
   public func bindTo(tableView: UITableView, animated: Bool = true, createCell: (NSIndexPath, [Element.Element], UITableView) -> UITableViewCell) -> Disposable {
     return map { CollectionChangeset.initial($0.toArray()) }.bindTo(tableView, animated: animated, createCell: createCell)
   }
+
+  public func bindTo(tableView: UITableView, animationProvider: TableAnimation.IndexPathAnimationProvider, createCell: (NSIndexPath, [Element.Element], UITableView) -> UITableViewCell) -> Disposable {
+    return map { CollectionChangeset.initial($0.toArray()) }.bindTo(tableView, animationProvider: animationProvider, createCell: createCell)
+  }
 }
 
 extension StreamType where Element: CollectionChangesetType, Element.Collection.Index == Int, Event.Element == Element {
 
-  public func bindTo(tableView: UITableView, animated: Bool = true, createCell: (NSIndexPath, Element.Collection, UITableView) -> UITableViewCell) -> Disposable {
+  public func bindTo(tableView: UITableView, animationProvider: TableAnimation.IndexPathAnimationProvider?, createCell: (NSIndexPath, Element.Collection, UITableView) -> UITableViewCell) -> Disposable {
 
     typealias Collection = Element.Collection
 
@@ -87,16 +116,22 @@ extension StreamType where Element: CollectionChangesetType, Element.Collection.
         let justReload = collection.value == nil
         collection.value = event.collection
         numberOfItems.value = event.collection.count
-        if justReload || !animated || event.inserts.count + event.deletes.count + event.updates.count == 0 {
+        if justReload || animationProvider == nil || event.inserts.count + event.deletes.count + event.updates.count == 0 {
           tableView.reloadData()
         } else {
           tableView.beginUpdates()
-          applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0)
+          applyRowUnitChangeSet(event, tableView: tableView, sectionIndex: 0, animationProvider: animationProvider!)
           tableView.endUpdates()
         }
       }
     }
     return serialDisposable
+
+  }
+
+
+  public func bindTo(tableView: UITableView, animated: Bool = true, createCell: (NSIndexPath, Element.Collection, UITableView) -> UITableViewCell) -> Disposable {
+    return self.bindTo(tableView, animationProvider: TableAnimation.alwaysAutomatic, createCell: createCell)
   }
 }
 
