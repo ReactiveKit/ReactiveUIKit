@@ -48,7 +48,7 @@ extension UITextField {
       }.disposeIn(rBag)
       
       self.rControlEvent
-        .filter { $0 == UIControlEvents.EditingChanged }
+        .filter { $0 == UIControlEvents.AllEditingEvents }
         .observeNext { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true
@@ -76,7 +76,7 @@ extension UITextField {
       }.disposeIn(rBag)
       
       self.rControlEvent
-        .filter { $0 == UIControlEvents.EditingChanged }
+        .filter { $0 == UIControlEvents.AllEditingEvents }
         .observeNext { [weak self] event in
           guard let unwrappedSelf = self else { return }
           updatingFromSelf = true

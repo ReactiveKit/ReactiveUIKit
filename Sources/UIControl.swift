@@ -47,6 +47,7 @@ import ReactiveKit
     control.addTarget(self, action: #selector(RKUIControlHelper.eventHandlerEditingChanged), forControlEvents: UIControlEvents.EditingChanged)
     control.addTarget(self, action: #selector(RKUIControlHelper.eventHandlerEditingDidEnd), forControlEvents: UIControlEvents.EditingDidEnd)
     control.addTarget(self, action: #selector(RKUIControlHelper.eventHandlerEditingDidEndOnExit), forControlEvents: UIControlEvents.EditingDidEndOnExit)
+    control.addTarget(self, action: #selector(RKUIControlHelper.eventHandlerAllEditingEvents), forControlEvents: UIControlEvents.AllEditingEvents)
   }
   
   func eventHandlerTouchDown() {
@@ -104,7 +105,11 @@ import ReactiveKit
   func eventHandlerEditingDidEndOnExit() {
     pushStream.next(.EditingDidEndOnExit)
   }
-  
+
+  func eventHandlerAllEditingEvents() {
+    pushStream.next(.AllEditingEvents)
+  }
+
   deinit {
     control?.removeTarget(self, action: nil, forControlEvents: UIControlEvents.AllEvents)
     pushStream.completed()
